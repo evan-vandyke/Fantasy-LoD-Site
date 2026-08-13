@@ -6,7 +6,45 @@
 <title>Moves &middot; League of Destiny</title>
 <link rel="stylesheet" href="static/style.css">
 <link rel="stylesheet" href="static/theme.css">
-<link rel="stylesheet" href="static/managers.css">
+<link rel="stylesheet" href="static/managers.css"><script>
+(function () {
+  var root = document.documentElement;
+  root.classList.add("js");
+
+  // Storage is unavailable on a file:// origin in some browsers, and in private mode.
+  // Losing the preference is fine; throwing on every page load is not.
+  function read(key) {
+    try { return localStorage.getItem(key); } catch (e) { return null; }
+  }
+  function write(key, value) {
+    try {
+      if (value) { localStorage.setItem(key, value); } else { localStorage.removeItem(key); }
+    } catch (e) { /* nothing to do about it */ }
+  }
+  function apply(attribute, value) {
+    if (value) { root.setAttribute(attribute, value); } else { root.removeAttribute(attribute); }
+  }
+
+  apply("data-team", read("team"));
+  apply("data-theme", read("theme"));
+
+  // One delegated listener rather than 35, and it survives the header being rebuilt.
+  document.addEventListener("click", function (event) {
+    var target = event.target;
+    if (!target || !target.closest) { return; }
+    var button = target.closest("[data-set-team], [data-set-theme]");
+    if (!button) { return; }
+
+    var team = button.hasAttribute("data-set-team");
+    var value = button.getAttribute(team ? "data-set-team" : "data-set-theme");
+    apply(team ? "data-team" : "data-theme", value);
+    write(team ? "team" : "theme", value);
+
+    var menu = button.closest("details");
+    if (menu) { menu.open = false; }
+  });
+})();
+</script>
 </head>
 <body>
 
@@ -19,15 +57,132 @@
       <a href="records.html" >Records</a>
       <a href="awards.html" >Awards</a>
       <a href="superlatives.html" >Superlatives</a>
-      <a href="hall-of-fame.html" >Hall of Fame</a>
       <a href="h2h.html" >Head&#8209;to&#8209;head</a>
       <a href="managers.html" >Managers</a>
       <a href="moves.html" class="active">Moves</a>
       <a href="seasons/2026.html" >2026</a>
-      <a href="seasons/2025.html" >2025</a>
-      <a href="seasons/2024.html" >2024</a>
-      <a href="seasons/2023.html" >2023</a>
-      <a href="seasons/2022.html" >2022</a>
+      <details class="menu">
+        <summary >Previous Seasons</summary>
+        <div class="menu-items">
+          <a href="seasons/2025.html" >2025</a>
+          <a href="seasons/2024.html" >2024</a>
+          <a href="seasons/2023.html" >2023</a>
+          <a href="seasons/2022.html" >2022</a>
+        </div>
+      </details>
+<details class="menu picker">
+        <summary>Appearance</summary>
+        <div class="menu-items picker-items">
+          <p class="picker-label">Background</p>
+          <div class="picker-row">
+            <button type="button" data-set-theme="">Auto</button>
+            <button type="button" data-set-theme="light">Light</button>
+            <button type="button" data-set-theme="dark">Dark</button>
+          </div>
+          <p class="picker-label">Accent</p>
+          <div class="picker-row teams">
+            <button type="button" class="default" data-set-team="" title="Washington Commanders">
+              <span class="dot" style="background: var(--team-commanders)"></span>League default
+            </button>
+            <button type="button" data-set-team="49ers">
+              <span class="dot" style="background: var(--team-49ers)"></span>49ers
+            </button>
+            <button type="button" data-set-team="bears">
+              <span class="dot" style="background: var(--team-bears)"></span>Bears
+            </button>
+            <button type="button" data-set-team="bengals">
+              <span class="dot" style="background: var(--team-bengals)"></span>Bengals
+            </button>
+            <button type="button" data-set-team="bills">
+              <span class="dot" style="background: var(--team-bills)"></span>Bills
+            </button>
+            <button type="button" data-set-team="broncos">
+              <span class="dot" style="background: var(--team-broncos)"></span>Broncos
+            </button>
+            <button type="button" data-set-team="browns">
+              <span class="dot" style="background: var(--team-browns)"></span>Browns
+            </button>
+            <button type="button" data-set-team="buccaneers">
+              <span class="dot" style="background: var(--team-buccaneers)"></span>Buccaneers
+            </button>
+            <button type="button" data-set-team="cardinals">
+              <span class="dot" style="background: var(--team-cardinals)"></span>Cardinals
+            </button>
+            <button type="button" data-set-team="chargers">
+              <span class="dot" style="background: var(--team-chargers)"></span>Chargers
+            </button>
+            <button type="button" data-set-team="chiefs">
+              <span class="dot" style="background: var(--team-chiefs)"></span>Chiefs
+            </button>
+            <button type="button" data-set-team="colts">
+              <span class="dot" style="background: var(--team-colts)"></span>Colts
+            </button>
+            <button type="button" data-set-team="commanders">
+              <span class="dot" style="background: var(--team-commanders)"></span>Commanders
+            </button>
+            <button type="button" data-set-team="cowboys">
+              <span class="dot" style="background: var(--team-cowboys)"></span>Cowboys
+            </button>
+            <button type="button" data-set-team="dolphins">
+              <span class="dot" style="background: var(--team-dolphins)"></span>Dolphins
+            </button>
+            <button type="button" data-set-team="eagles">
+              <span class="dot" style="background: var(--team-eagles)"></span>Eagles
+            </button>
+            <button type="button" data-set-team="falcons">
+              <span class="dot" style="background: var(--team-falcons)"></span>Falcons
+            </button>
+            <button type="button" data-set-team="giants">
+              <span class="dot" style="background: var(--team-giants)"></span>Giants
+            </button>
+            <button type="button" data-set-team="jaguars">
+              <span class="dot" style="background: var(--team-jaguars)"></span>Jaguars
+            </button>
+            <button type="button" data-set-team="jets">
+              <span class="dot" style="background: var(--team-jets)"></span>Jets
+            </button>
+            <button type="button" data-set-team="lions">
+              <span class="dot" style="background: var(--team-lions)"></span>Lions
+            </button>
+            <button type="button" data-set-team="packers">
+              <span class="dot" style="background: var(--team-packers)"></span>Packers
+            </button>
+            <button type="button" data-set-team="panthers">
+              <span class="dot" style="background: var(--team-panthers)"></span>Panthers
+            </button>
+            <button type="button" data-set-team="patriots">
+              <span class="dot" style="background: var(--team-patriots)"></span>Patriots
+            </button>
+            <button type="button" data-set-team="raiders">
+              <span class="dot" style="background: var(--team-raiders)"></span>Raiders
+            </button>
+            <button type="button" data-set-team="rams">
+              <span class="dot" style="background: var(--team-rams)"></span>Rams
+            </button>
+            <button type="button" data-set-team="ravens">
+              <span class="dot" style="background: var(--team-ravens)"></span>Ravens
+            </button>
+            <button type="button" data-set-team="saints">
+              <span class="dot" style="background: var(--team-saints)"></span>Saints
+            </button>
+            <button type="button" data-set-team="seahawks">
+              <span class="dot" style="background: var(--team-seahawks)"></span>Seahawks
+            </button>
+            <button type="button" data-set-team="steelers">
+              <span class="dot" style="background: var(--team-steelers)"></span>Steelers
+            </button>
+            <button type="button" data-set-team="texans">
+              <span class="dot" style="background: var(--team-texans)"></span>Texans
+            </button>
+            <button type="button" data-set-team="titans">
+              <span class="dot" style="background: var(--team-titans)"></span>Titans
+            </button>
+            <button type="button" data-set-team="vikings">
+              <span class="dot" style="background: var(--team-vikings)"></span>Vikings
+            </button>
+          </div>
+        </div>
+      </details>
     </nav>
   </div>
 </header>
@@ -1231,7 +1386,7 @@
 
 
 <footer>
-  <p>Built 12 Aug 2026 from 382 games. Records follow the manager, not the team name.</p>
+  <p>Built 13 Aug 2026 from 382 games. Records follow the manager, not the team name.</p>
   <p>Scores come from ESPN. Playoff rounds that span two weeks are marked, and excluded from single&#8209;week records.</p>
 </footer>
 </main>

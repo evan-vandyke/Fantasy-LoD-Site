@@ -10,7 +10,6 @@
   --text: #eef2f9;
   --muted: #8494ad;
   --accent: #ff5a1f;
-  --accent-2: #22d3ee;
   --accent-soft: #1f2937;
   --good: #34d399;
   --bad: #fb7185;
@@ -31,37 +30,114 @@
   --text: #0c0f16; --muted: #5b6880; --accent: #dc4310; --accent-soft: #fdeee7;
   --shadow: 0 2px 10px rgba(12,15,22,0.07);
 }
+/* Dark is the default above, so it needs saying again here: a reader who asks for dark on
+   a light system has to outrank the prefers-color-scheme block, and `:root` alone cannot.
+   The accent in both of these is a fallback — theme.css loads later and sets the real one. */
+:root[data-theme="dark"] {
+  --bg: #0c0f16; --surface: #151a25; --surface-2: #1c2331; --border: #263044;
+  --text: #eef2f9; --muted: #8494ad; --accent: #ff5a1f; --accent-soft: #1f2937;
+  --shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
 
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.5 var(--sans); }
 .wrap { max-width: 72rem; margin: 0 auto; padding: 0 1.2rem 4rem; }
 
+/* The masthead is a block of the team's own colour — the scoreboard-card treatment, where
+   the band *is* the identity rather than a neutral bar with a coloured edge. theme.css
+   publishes the fill and everything that has to read on top of it, for all 32 teams and
+   both backgrounds, so nothing here needs to know which team is showing.
+
+   The page palette is deliberately left alone: a dropdown anchored in this band is still a
+   normal menu on a normal surface, and it inherits --surface and --text as usual. */
 header.masthead {
-  background: linear-gradient(160deg, var(--surface-2), var(--surface));
-  border-bottom: 3px solid var(--accent); margin-bottom: 2rem;
+  background: var(--fill); color: var(--on-fill);
+  border-bottom: 3px solid var(--pill); margin-bottom: 2rem;
 }
 .masthead .wrap { padding-top: 1.8rem; padding-bottom: 0; }
 .masthead h1 {
   font-size: clamp(1.6rem, 4.5vw, 2.4rem); font-weight: 800;
   letter-spacing: -0.035em; margin: 0 0 0.2rem; text-transform: uppercase;
 }
-.masthead h1 a {
-  color: inherit; text-decoration: none;
-  background: linear-gradient(92deg, var(--accent), var(--accent-2));
-  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-}
+/* Plain, not a gradient across two colours: the band already says which team this is, and
+   a fade underneath it read as a rainbow rather than as a badge. */
+.masthead h1 a { color: var(--on-fill); text-decoration: none; }
 .masthead .tagline {
-  color: var(--muted); font-size: 0.78rem; margin: 0 0 1rem;
+  color: var(--on-fill-muted); font-size: 0.78rem; margin: 0 0 1rem;
   font-variant-numeric: tabular-nums; letter-spacing: 0.02em;
 }
 nav.tabs { display: flex; flex-wrap: wrap; gap: 0.3rem; padding-bottom: 0.7rem; }
 nav.tabs a {
-  padding: 0.42rem 0.85rem; color: var(--muted); text-decoration: none;
+  padding: 0.42rem 0.85rem; color: var(--on-fill-muted); text-decoration: none;
   font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
   border-radius: 999px; border: 1px solid transparent;
 }
-nav.tabs a:hover { color: var(--text); background: var(--surface-2); }
-nav.tabs a.active { color: #fff; background: var(--accent); }
+nav.tabs a:hover { color: var(--on-fill); background: var(--fill-soft); }
+/* The active tab wears the team's second colour when it stands out on the band — gold on
+   Packers green, silver on Raiders black — and plain white or black when it would not. */
+nav.tabs a.active { color: var(--on-pill); background: var(--pill); }
+
+/* The season menu. `details` gives a dropdown that opens on click with no script behind
+   it — the marker is removed so the summary reads as one more tab until it is used. */
+nav.tabs details.menu { position: relative; }
+nav.tabs summary {
+  padding: 0.42rem 0.85rem; color: var(--on-fill-muted); cursor: pointer;
+  font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+  border-radius: 999px; border: 1px solid transparent; list-style: none;
+  /* Without this, opening the menu twice selects the word instead. */
+  user-select: none; -webkit-user-select: none;
+}
+nav.tabs summary::-webkit-details-marker { display: none; }
+nav.tabs summary::after { content: " \25BE"; }
+nav.tabs summary:hover, nav.tabs details[open] summary { color: var(--on-fill); background: var(--fill-soft); }
+/* Opening the menu must not stop it saying where you are, so the active state outranks
+   the open one — hence the repeat rather than one `summary.active` rule. */
+nav.tabs summary.active, nav.tabs details[open] summary.active {
+  color: var(--on-pill); background: var(--pill);
+}
+nav.tabs .menu-items {
+  position: absolute; z-index: 20; top: calc(100% + 0.3rem); left: 0;
+  display: grid; grid-template-columns: repeat(2, minmax(3.6rem, 1fr)); gap: 0.15rem;
+  padding: 0.35rem; background: var(--surface);
+  border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow);
+}
+/* Inside a dropdown we are off the coloured band and back on an ordinary surface, so the
+   links go back to the page's own colours rather than the ones that read on the fill. */
+nav.tabs .menu-items a { text-align: center; font-variant-numeric: tabular-nums; color: var(--muted); }
+nav.tabs .menu-items a:hover { color: var(--text); background: var(--surface-2); }
+nav.tabs .menu-items a.active { color: var(--on-accent); background: var(--accent); }
+
+/* The appearance picker. Hidden until the script adds `js` to <html>: without it the
+   buttons cannot do anything, and a dead control is worse than no control. */
+nav.tabs details.picker { display: none; }
+:root.js nav.tabs details.picker { display: block; margin-left: auto; }
+nav.tabs .picker-items {
+  display: block; right: 0; left: auto;
+  /* A fixed width, not max-content: an auto-fill grid inside a shrink-to-fit box
+     resolves to one column, and the 32 teams need to read as a grid. */
+  width: min(23rem, calc(100vw - 2.4rem));
+  max-height: min(26rem, 70vh); overflow-y: auto;
+}
+.picker-label {
+  margin: 0.35rem 0 0.25rem; padding: 0 0.3rem; color: var(--muted);
+  font-size: 0.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;
+}
+.picker-label:first-child { margin-top: 0; }
+.picker-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.15rem; }
+.picker-row.teams { grid-template-columns: repeat(auto-fill, minmax(6.6rem, 1fr)); }
+.picker-row button {
+  display: flex; align-items: center; gap: 0.35rem;
+  padding: 0.35rem 0.5rem; border: 1px solid transparent; border-radius: 999px;
+  background: none; color: var(--muted); cursor: pointer; font: inherit;
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
+  text-align: left; white-space: nowrap;
+}
+.picker-row button:hover { color: var(--text); background: var(--surface-2); }
+.picker-row button.default { grid-column: 1 / -1; }
+.picker-row .dot {
+  width: 0.6rem; height: 0.6rem; border-radius: 50%; flex: none;
+  box-shadow: 0 0 0 1px rgba(128,128,128,0.35);
+}
 
 h2 { font-size: 1.15rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; margin: 2.6rem 0 0.3rem; }
 h2:first-of-type { margin-top: 0; }
@@ -107,7 +183,8 @@ a:hover { text-decoration: underline; }
 .pos { color: var(--good); font-weight: 700; } .neg { color: var(--bad); font-weight: 700; } .dim { color: var(--muted); }
 .tag {
   display: inline-block; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.06em;
-  padding: 0.14rem 0.42rem; border-radius: 999px; background: var(--accent); color: #fff;
+  padding: 0.14rem 0.42rem; border-radius: 999px; background: var(--accent);
+  color: var(--on-accent, #fff);
   font-weight: 800; vertical-align: 1px;
 }
 
