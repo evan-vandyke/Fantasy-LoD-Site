@@ -260,3 +260,70 @@ tr.departed td.name { font-weight: 600; }
 /* A plaque nobody holds keeps its place on the wall and reads as pending, not as a bug. */
 .award-empty { border-style: dashed; }
 .award-empty .award-winner { font-weight: 700; font-size: 1rem; }
+
+/* ---------------------------------------------------------------- dev banner
+   Only rendered when `fantasy site --label` is passed. It has one job: make it
+   impossible to look at a scenario build and think you are looking at the league's
+   site. So it does not use the theme accent — a Commanders-gold strip reads as part
+   of the design — and it does not scroll away. Hard-coded colours on purpose: this
+   must look identical and alarming under every one of the 32 team themes, in both
+   light and dark. */
+.dev-banner {
+  position: sticky; top: 0; z-index: 100;
+  background: repeating-linear-gradient(
+    135deg, #b45309, #b45309 14px, #92400e 14px, #92400e 28px
+  );
+  color: #fffbeb; border-bottom: 3px solid #fbbf24;
+}
+.dev-banner .wrap {
+  padding-top: 0.55rem; padding-bottom: 0.55rem;
+  display: flex; gap: 0.75rem; align-items: baseline; flex-wrap: wrap;
+}
+.dev-banner strong {
+  text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.82rem;
+  white-space: nowrap;
+}
+.dev-banner span { font-size: 0.82rem; opacity: 0.92; }
+
+/* ------------------------------------------------------------- schedule page
+   The week-by-week grid. Fourteen small cards rather than one 84-row table: a
+   schedule is read a week at a time, and the week is the only grouping anybody
+   scanning for "who do I play" actually uses. Rides on `.grid`, so the column
+   count is the same auto-fit rule the rest of the site uses. */
+.weeks { margin-top: 0.9rem; }
+.week { padding: 0.85rem 0.95rem; }
+.week h4 {
+  margin: 0 0 0.5rem; font-size: 0.82rem; text-transform: uppercase;
+  letter-spacing: 0.05em; color: var(--muted);
+}
+.week table { font-size: 0.88rem; }
+.week td { padding: 0.2rem 0.3rem; border: 0; }
+.week td:first-child { padding-left: 0; }
+.week td:last-child { padding-right: 0; font-size: 0.72rem; }
+/* Rivalry Week earns the accent. It is the one week of the season chosen by hand
+   rather than fallen out of the optimiser, and the page says so twice — here and
+   in the heading — because it is the thing readers come to this page for. */
+.week.rivalry { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.week.rivalry h4 { color: var(--accent); }
+
+/* A plain explanatory list. `.sub` is the muted paragraph voice; this is the same
+   voice in list form, for the places where four short facts read better than one
+   long sentence containing all four. */
+ul.plain {
+  color: var(--muted); font-size: 0.85rem; max-width: 44rem;
+  margin: 0 0 1rem; padding-left: 1.1rem;
+}
+ul.plain li { margin-bottom: 0.3rem; }
+
+/* Says the page is showing something other than what the reader assumes. Distinct
+   from `.dev-banner`, which says the whole *site* is fake — this one sits inside a
+   real page and qualifies one part of it, so it uses the page's own surface and
+   earns attention from the accent bar rather than from stripes. */
+.notice {
+  background: var(--surface); border: 1px solid var(--border);
+  border-left: 4px solid var(--accent); border-radius: var(--radius);
+  padding: 0.85rem 1rem; margin: 0 0 1.2rem; max-width: 44rem;
+  box-shadow: var(--shadow);
+}
+.notice strong { display: block; margin-bottom: 0.25rem; }
+.notice p { margin: 0; color: var(--muted); font-size: 0.85rem; }

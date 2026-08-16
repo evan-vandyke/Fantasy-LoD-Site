@@ -1,0 +1,1262 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow, noarchive"><title>2026 Schedule &middot; League of Destiny</title>
+<link rel="stylesheet" href="static/style.css">
+<link rel="stylesheet" href="static/theme.css">
+<link rel="stylesheet" href="static/managers.css"><script>
+(function () {
+  var root = document.documentElement;
+  root.classList.add("js");
+
+  // Storage is unavailable on a file:// origin in some browsers, and in private mode.
+  // Losing the preference is fine; throwing on every page load is not.
+  function read(key) {
+    try { return localStorage.getItem(key); } catch (e) { return null; }
+  }
+  function write(key, value) {
+    try {
+      if (value) { localStorage.setItem(key, value); } else { localStorage.removeItem(key); }
+    } catch (e) { /* nothing to do about it */ }
+  }
+  function apply(attribute, value) {
+    if (value) { root.setAttribute(attribute, value); } else { root.removeAttribute(attribute); }
+  }
+
+  apply("data-team", read("team"));
+  apply("data-theme", read("theme"));
+
+  // One delegated listener rather than 35, and it survives the header being rebuilt.
+  document.addEventListener("click", function (event) {
+    var target = event.target;
+    if (!target || !target.closest) { return; }
+    var button = target.closest("[data-set-team], [data-set-theme]");
+    if (!button) { return; }
+
+    var team = button.hasAttribute("data-set-team");
+    var value = button.getAttribute(team ? "data-set-team" : "data-set-theme");
+    apply(team ? "data-team" : "data-theme", value);
+    write(team ? "team" : "theme", value);
+
+    var menu = button.closest("details");
+    if (menu) { menu.open = false; }
+  });
+})();
+</script>
+</head>
+<body>
+
+
+<header class="masthead">
+  <div class="wrap">
+    <h1><a href="index.html">League of Destiny</a></h1>
+    <p class="tagline">2022&ndash;2025 &middot; 12 managers &middot; 84 games on record</p>
+    <nav class="tabs">
+      <a href="index.html" >Home</a>
+      <a href="records.html" >Records</a>
+      <a href="awards.html" >Awards</a>
+      <a href="superlatives.html" >Superlatives</a>
+      <a href="h2h.html" >Head&#8209;to&#8209;head</a>
+      <a href="schedule.html" class="active">Schedule</a>
+      <a href="managers.html" >Managers</a>
+      <a href="moves.html" >Moves</a>
+      <a href="seasons/2026.html" >2026</a>
+      <details class="menu">
+        <summary >Previous Seasons</summary>
+        <div class="menu-items">
+          <a href="seasons/2025.html" >2025</a>
+          <a href="seasons/2024.html" >2024</a>
+          <a href="seasons/2023.html" >2023</a>
+          <a href="seasons/2022.html" >2022</a>
+        </div>
+      </details>
+<details class="menu picker">
+        <summary>Appearance</summary>
+        <div class="menu-items picker-items">
+          <p class="picker-label">Background</p>
+          <div class="picker-row">
+            <button type="button" data-set-theme="">Auto</button>
+            <button type="button" data-set-theme="light">Light</button>
+            <button type="button" data-set-theme="dark">Dark</button>
+          </div>
+          <p class="picker-label">Accent</p>
+          <div class="picker-row teams">
+            <button type="button" class="default" data-set-team="" title="Washington Commanders">
+              <span class="dot" style="background: var(--team-commanders)"></span>League default
+            </button>
+            <button type="button" data-set-team="49ers">
+              <span class="dot" style="background: var(--team-49ers)"></span>49ers
+            </button>
+            <button type="button" data-set-team="bears">
+              <span class="dot" style="background: var(--team-bears)"></span>Bears
+            </button>
+            <button type="button" data-set-team="bengals">
+              <span class="dot" style="background: var(--team-bengals)"></span>Bengals
+            </button>
+            <button type="button" data-set-team="bills">
+              <span class="dot" style="background: var(--team-bills)"></span>Bills
+            </button>
+            <button type="button" data-set-team="broncos">
+              <span class="dot" style="background: var(--team-broncos)"></span>Broncos
+            </button>
+            <button type="button" data-set-team="browns">
+              <span class="dot" style="background: var(--team-browns)"></span>Browns
+            </button>
+            <button type="button" data-set-team="buccaneers">
+              <span class="dot" style="background: var(--team-buccaneers)"></span>Buccaneers
+            </button>
+            <button type="button" data-set-team="cardinals">
+              <span class="dot" style="background: var(--team-cardinals)"></span>Cardinals
+            </button>
+            <button type="button" data-set-team="chargers">
+              <span class="dot" style="background: var(--team-chargers)"></span>Chargers
+            </button>
+            <button type="button" data-set-team="chiefs">
+              <span class="dot" style="background: var(--team-chiefs)"></span>Chiefs
+            </button>
+            <button type="button" data-set-team="colts">
+              <span class="dot" style="background: var(--team-colts)"></span>Colts
+            </button>
+            <button type="button" data-set-team="commanders">
+              <span class="dot" style="background: var(--team-commanders)"></span>Commanders
+            </button>
+            <button type="button" data-set-team="cowboys">
+              <span class="dot" style="background: var(--team-cowboys)"></span>Cowboys
+            </button>
+            <button type="button" data-set-team="dolphins">
+              <span class="dot" style="background: var(--team-dolphins)"></span>Dolphins
+            </button>
+            <button type="button" data-set-team="eagles">
+              <span class="dot" style="background: var(--team-eagles)"></span>Eagles
+            </button>
+            <button type="button" data-set-team="falcons">
+              <span class="dot" style="background: var(--team-falcons)"></span>Falcons
+            </button>
+            <button type="button" data-set-team="giants">
+              <span class="dot" style="background: var(--team-giants)"></span>Giants
+            </button>
+            <button type="button" data-set-team="jaguars">
+              <span class="dot" style="background: var(--team-jaguars)"></span>Jaguars
+            </button>
+            <button type="button" data-set-team="jets">
+              <span class="dot" style="background: var(--team-jets)"></span>Jets
+            </button>
+            <button type="button" data-set-team="lions">
+              <span class="dot" style="background: var(--team-lions)"></span>Lions
+            </button>
+            <button type="button" data-set-team="packers">
+              <span class="dot" style="background: var(--team-packers)"></span>Packers
+            </button>
+            <button type="button" data-set-team="panthers">
+              <span class="dot" style="background: var(--team-panthers)"></span>Panthers
+            </button>
+            <button type="button" data-set-team="patriots">
+              <span class="dot" style="background: var(--team-patriots)"></span>Patriots
+            </button>
+            <button type="button" data-set-team="raiders">
+              <span class="dot" style="background: var(--team-raiders)"></span>Raiders
+            </button>
+            <button type="button" data-set-team="rams">
+              <span class="dot" style="background: var(--team-rams)"></span>Rams
+            </button>
+            <button type="button" data-set-team="ravens">
+              <span class="dot" style="background: var(--team-ravens)"></span>Ravens
+            </button>
+            <button type="button" data-set-team="saints">
+              <span class="dot" style="background: var(--team-saints)"></span>Saints
+            </button>
+            <button type="button" data-set-team="seahawks">
+              <span class="dot" style="background: var(--team-seahawks)"></span>Seahawks
+            </button>
+            <button type="button" data-set-team="steelers">
+              <span class="dot" style="background: var(--team-steelers)"></span>Steelers
+            </button>
+            <button type="button" data-set-team="texans">
+              <span class="dot" style="background: var(--team-texans)"></span>Texans
+            </button>
+            <button type="button" data-set-team="titans">
+              <span class="dot" style="background: var(--team-titans)"></span>Titans
+            </button>
+            <button type="button" data-set-team="vikings">
+              <span class="dot" style="background: var(--team-vikings)"></span>Vikings
+            </button>
+          </div>
+        </div>
+      </details>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<h2>2026 schedule</h2>
+<p class="sub">84 games over 14 weeks. Who plays who, and why.</p>
+
+
+<h3>How it works</h3>
+<ul class="plain">
+  <li>There are 12 managers. Everyone plays everyone else once. That fills
+    11 weeks.</li>
+  <li>The season is 14 weeks long, so 3
+    weeks are left over.</li>
+  <li>Those weeks are rematches. 18 pairs play twice, and every manager
+    gets exactly 3 rematches.</li>
+  <li>Nobody plays the same person three times. There is no room for it.</li>
+</ul>
+<p class="sub">
+  So the only real choice is <strong>who gets the rematches</strong>. They go to the
+  managers who have played each other the least. This year those pairs have met
+  <strong>3.9</strong> times on average. Across the whole
+  league the average is <strong>5.2</strong>.
+</p>
+
+<h3>Rivalry Week &middot; week 14</h3>
+<p class="sub">
+  Six matchups, picked on purpose. A rivalry means two managers with a close record who
+  have met when it mattered. It is <strong>not</strong> about who has played the most.
+</p>
+<div class="card scroll">
+<table>
+  <thead>
+    <tr>
+      <th>Matchup</th><th class="num">Score</th><th class="num">Record</th>
+<th class="num">Playoff games</th><th>Titles</th>      <th>Why</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="name"><a href="managers/mgr_adam.html">Adam</a> vs <a href="managers/mgr_ben.html">Ben</a></td>
+      <td class="num">2.52</td>
+      <td class="num">3-3</td>
+      <td class="num">1</td>
+      <td>2025</td>
+      <td class="dim">2025 championship rematch, 3-3 all-time</td>
+    </tr>
+    <tr>
+      <td class="name"><a href="managers/mgr_larry.html">L.J.</a> vs <a href="managers/mgr_stephen.html">Beale</a></td>
+      <td class="num">2.32</td>
+      <td class="num">4-4</td>
+      <td class="num">2</td>
+      <td>2023</td>
+      <td class="dim">2023 championship rematch, 4-4 all-time</td>
+    </tr>
+    <tr>
+      <td class="name"><a href="managers/mgr_greg.html">Greg</a> vs <a href="managers/mgr_jon.html">Jon</a></td>
+      <td class="num">1.79</td>
+      <td class="num">3-5</td>
+      <td class="num">3</td>
+      <td>&ndash;</td>
+      <td class="dim">3 playoff meetings, 3-5 all-time</td>
+    </tr>
+    <tr>
+      <td class="name"><a href="managers/mgr_evan.html">Evan</a> vs <a href="managers/mgr_sean.html">Sean</a></td>
+      <td class="num">1.11</td>
+      <td class="num">3-5</td>
+      <td class="num">2</td>
+      <td>&ndash;</td>
+      <td class="dim">2 playoff meetings, 3-5 all-time</td>
+    </tr>
+    <tr>
+      <td class="name"><a href="managers/mgr_andrew.html">Blunt</a> vs <a href="managers/mgr_stew.html">Stew</a></td>
+      <td class="num">0.75</td>
+      <td class="num">3-6</td>
+      <td class="num">2</td>
+      <td>&ndash;</td>
+      <td class="dim">2 playoff meetings, 3-6 all-time</td>
+    </tr>
+    <tr>
+      <td class="name"><a href="managers/mgr_josh.html">Josh</a> vs <a href="managers/mgr_nic.html">Nic</a></td>
+      <td class="num">0.00</td>
+      <td class="num">0-2</td>
+      <td class="num">0</td>
+      <td>&ndash;</td>
+      <td class="dim">0-2 all-time, never in the playoffs</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3>The rivalry board</h3>
+<p class="sub">
+  Every pair, scored. Higher is a better rivalry. A one-sided record scores low even when
+  the games were big &mdash; being 6&ndash;2 up on someone is not a rivalry.
+</p>
+<div class="card scroll">
+<table>
+  <thead>
+    <tr>
+      <th></th><th>Pair</th><th class="num">Score</th><th class="num">Record</th>
+      <th class="num">Playoff games</th><th>Titles</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="rank">1</td>
+      <td class="name">Adam / Ben</td>
+      <td class="num">2.52</td>
+      <td class="num">3-3</td>
+      <td class="num">1</td>
+      <td>2025</td>
+    </tr>
+    <tr>
+      <td class="rank">2</td>
+      <td class="name">L.J. / Beale</td>
+      <td class="num">2.32</td>
+      <td class="num">4-4</td>
+      <td class="num">2</td>
+      <td>2023</td>
+    </tr>
+    <tr>
+      <td class="rank">3</td>
+      <td class="name">Adam / Jon</td>
+      <td class="num">1.93</td>
+      <td class="num">4-4</td>
+      <td class="num">3</td>
+      <td>&ndash;</td>
+    </tr>
+    <tr>
+      <td class="rank">4</td>
+      <td class="name">Greg / Jon</td>
+      <td class="num">1.79</td>
+      <td class="num">3-5</td>
+      <td class="num">3</td>
+      <td>&ndash;</td>
+    </tr>
+    <tr>
+      <td class="rank">5</td>
+      <td class="name">L.J. / Sean</td>
+      <td class="num">1.65</td>
+      <td class="num">5-2</td>
+      <td class="num">3</td>
+      <td>2022</td>
+    </tr>
+    <tr>
+      <td class="rank">6</td>
+      <td class="name">Sean / Stew</td>
+      <td class="num">1.19</td>
+      <td class="num">2-6</td>
+      <td class="num">3</td>
+      <td>2024</td>
+    </tr>
+    <tr>
+      <td class="rank">7</td>
+      <td class="name">Evan / Sean</td>
+      <td class="num">1.11</td>
+      <td class="num">3-5</td>
+      <td class="num">2</td>
+      <td>&ndash;</td>
+    </tr>
+    <tr>
+      <td class="rank">8</td>
+      <td class="name">Greg / Beale</td>
+      <td class="num">1.09</td>
+      <td class="num">4-3</td>
+      <td class="num">2</td>
+      <td>&ndash;</td>
+    </tr>
+    <tr>
+      <td class="rank">9</td>
+      <td class="name">Adam / Beale</td>
+      <td class="num">1.02</td>
+      <td class="num">3-3</td>
+      <td class="num">1</td>
+      <td>&ndash;</td>
+    </tr>
+    <tr>
+      <td class="rank">10</td>
+      <td class="name">L.J. / Stew</td>
+      <td class="num">0.93</td>
+      <td class="num">3-4</td>
+      <td class="num">1</td>
+      <td>&ndash;</td>
+    </tr>
+    <tr>
+      <td class="rank">11</td>
+      <td class="name">Adam / Blunt</td>
+      <td class="num">0.88</td>
+      <td class="num">4-3</td>
+      <td class="num">2</td>
+      <td>&ndash;</td>
+    </tr>
+    <tr>
+      <td class="rank">12</td>
+      <td class="name">Ben / L.J.</td>
+      <td class="num">0.85</td>
+      <td class="num">3-5</td>
+      <td class="num">1</td>
+      <td>&ndash;</td>
+    </tr>
+    <tr>
+      <td class="rank">13</td>
+      <td class="name">Ben / Sean</td>
+      <td class="num">0.81</td>
+      <td class="num">2-3</td>
+      <td class="num">1</td>
+      <td>&ndash;</td>
+    </tr>
+    <tr>
+      <td class="rank">14</td>
+      <td class="name">Blunt / Stew</td>
+      <td class="num">0.74</td>
+      <td class="num">3-6</td>
+      <td class="num">2</td>
+      <td>&ndash;</td>
+    </tr>
+    <tr>
+      <td class="rank">15</td>
+      <td class="name">Ben / Jon</td>
+      <td class="num">0.70</td>
+      <td class="num">4-4</td>
+      <td class="num">1</td>
+      <td>&ndash;</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Who plays twice</h3>
+<p class="sub">
+  These 18 pairs meet again. Least familiar first.
+</p>
+<div class="card scroll">
+<table>
+  <thead>
+    <tr>
+      <th>Pair</th><th class="num">Played before</th><th class="num">Seasons together</th>
+      <th class="num">Games a season</th><th>Weeks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="name"><a href="managers/mgr_nic.html">Nic</a> / <a href="managers/mgr_stew.html">Stew</a></td>
+      <td class="num">2</td>
+      <td class="num">2</td>
+      <td class="num">1.00</td>
+      <td class="dim">3, 11</td>
+    </tr>
+    <tr>
+      <td class="name"><a href="managers/mgr_ben.html">Ben</a> / <a href="managers/mgr_josh.html">Josh</a></td>
+      <td class="num">2</td>
+      <td class="num">2</td>
+      <td class="num">1.00</td>
+      <td class="dim">5, 12</td>
+    </tr>
+    <tr>
+      <td class="name"><a href="managers/mgr_greg.html">Greg</a> / <a href="managers/mgr_josh.html">Josh</a></td>
+      <td class="num">2</td>
+      <td class="num">2</td>
+      <td class="num">1.00</td>
+      <td class="dim">6, 13</td>
+    </tr>
+    <tr>
+      <td class="name"><a href="managers/mgr_andrew.html">Blunt</a> / <a href="managers/mgr_nic.html">Nic</a></td>
+      <td class="num">2</td>
+      <td class="num">2</td>
+      <td class="num">1.00</td>
+      <td class="dim">6, 10</td>
+    </tr>
+    <tr>
+      <td class="name"><a href="managers/mgr_nic.html">Nic</a> / <a href="managers/mgr_sean.html">Sean</a></td>
+      <td class="num">2</td>
+      <td class="num">2</td>
+      <td class="num">1.00</td>
+      <td class="dim">8, 12</td>
+    </tr>
+    <tr>
+      <td class="name"><a href="managers/mgr_andrew.html">Blunt</a> / <a href="managers/mgr_greg.html">Greg</a></td>
+      <td class="num">4</td>
+      <td class="num">4</td>
+      <td class="num">1.00</td>
+      <td class="dim">2, 12</td>
+    </tr>
+    <tr>
+      <td class="name"><a href="managers/mgr_jon.html">Jon</a> / <a href="managers/mgr_sean.html">Sean</a></td>
+      <td class="num">4</td>
+      <td class="num">4</td>
+      <td class="num">1.00</td>
+      <td class="dim">2, 6</td>
+    </tr>
+    <tr>
+      <td class="name"><a href="managers/mgr_jon.html">Jon</a> / <a href="managers/mgr_stew.html">Stew</a></td>
+      <td class="num">4</td>
+      <td class="num">4</td>
+      <td class="num">1.00</td>
+      <td class="dim">5, 12</td>
+    </tr>
+    <tr>
+      <td class="name"><a href="managers/mgr_adam.html">Adam</a> / <a href="managers/mgr_larry.html">L.J.</a></td>
+      <td class="num">4</td>
+      <td class="num">4</td>
+      <td class="num">1.00</td>
+      <td class="dim">6, 11</td>
+    </tr>
+    <tr>
+      <td class="name"><a href="managers/mgr_andrew.html">Blunt</a> / <a href="managers/mgr_ben.html">Ben</a></td>
+      <td class="num">5</td>
+      <td class="num">4</td>
+      <td class="num">1.25</td>
+      <td class="dim">3, 7</td>
+    </tr>
+    <tr>
+      <td class="name"><a href="managers/mgr_evan.html">Evan</a> / <a href="managers/mgr_jon.html">Jon</a></td>
+      <td class="num">5</td>
+      <td class="num">4</td>
+      <td class="num">1.25</td>
+      <td class="dim">3, 9</td>
+    </tr>
+    <tr>
+      <td class="name"><a href="managers/mgr_greg.html">Greg</a> / <a href="managers/mgr_larry.html">L.J.</a></td>
+      <td class="num">5</td>
+      <td class="num">4</td>
+      <td class="num">1.25</td>
+      <td class="dim">3, 8</td>
+    </tr>
+    <tr>
+      <td class="name"><a href="managers/mgr_sean.html">Sean</a> / <a href="managers/mgr_stephen.html">Beale</a></td>
+      <td class="num">5</td>
+      <td class="num">4</td>
+      <td class="num">1.25</td>
+      <td class="dim">3, 13</td>
+    </tr>
+    <tr>
+      <td class="name"><a href="managers/mgr_ben.html">Ben</a> / <a href="managers/mgr_stephen.html">Beale</a></td>
+      <td class="num">5</td>
+      <td class="num">4</td>
+      <td class="num">1.25</td>
+      <td class="dim">6, 10</td>
+    </tr>
+    <tr>
+      <td class="name"><a href="managers/mgr_evan.html">Evan</a> / <a href="managers/mgr_stew.html">Stew</a></td>
+      <td class="num">5</td>
+      <td class="num">4</td>
+      <td class="num">1.25</td>
+      <td class="dim">6, 10</td>
+    </tr>
+    <tr>
+      <td class="name"><a href="managers/mgr_adam.html">Adam</a> / <a href="managers/mgr_josh.html">Josh</a></td>
+      <td class="num">3</td>
+      <td class="num">2</td>
+      <td class="num">1.50</td>
+      <td class="dim">3, 10</td>
+    </tr>
+    <tr>
+      <td class="name"><a href="managers/mgr_adam.html">Adam</a> / <a href="managers/mgr_stephen.html">Beale</a></td>
+      <td class="num">6</td>
+      <td class="num">4</td>
+      <td class="num">1.50</td>
+      <td class="dim">4, 12</td>
+    </tr>
+    <tr>
+      <td class="name"><a href="managers/mgr_evan.html">Evan</a> / <a href="managers/mgr_larry.html">L.J.</a></td>
+      <td class="num">6</td>
+      <td class="num">4</td>
+      <td class="num">1.50</td>
+      <td class="dim">7, 12</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Week by week</h3>
+<p class="sub">
+  Every game. The small number is how many times those two have played before this season.
+</p>
+<div class="grid weeks">
+  <div class="card week">
+    <h4>Week 1</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="name"><a href="managers/mgr_adam.html">Adam</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_andrew.html">Blunt</a></td>
+          <td class="num dim" title="times they have played before this season">7</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_josh.html">Josh</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_evan.html">Evan</a></td>
+          <td class="num dim" title="times they have played before this season">3</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_nic.html">Nic</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_greg.html">Greg</a></td>
+          <td class="num dim" title="times they have played before this season">5</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_ben.html">Ben</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_sean.html">Sean</a></td>
+          <td class="num dim" title="times they have played before this season">5</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_jon.html">Jon</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_stephen.html">Beale</a></td>
+          <td class="num dim" title="times they have played before this season">7</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_larry.html">L.J.</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_stew.html">Stew</a></td>
+          <td class="num dim" title="times they have played before this season">7</td>
+          <td class="dim"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card week">
+    <h4>Week 2</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="name"><a href="managers/mgr_evan.html">Evan</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_adam.html">Adam</a></td>
+          <td class="num dim" title="times they have played before this season">6</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_nic.html">Nic</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_ben.html">Ben</a></td>
+          <td class="num dim" title="times they have played before this season">2</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_andrew.html">Blunt</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_greg.html">Greg</a></td>
+          <td class="num dim" title="times they have played before this season">4</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_sean.html">Sean</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_jon.html">Jon</a></td>
+          <td class="num dim" title="times they have played before this season">4</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_larry.html">L.J.</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_josh.html">Josh</a></td>
+          <td class="num dim" title="times they have played before this season">3</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_stephen.html">Beale</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_stew.html">Stew</a></td>
+          <td class="num dim" title="times they have played before this season">6</td>
+          <td class="dim"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card week">
+    <h4>Week 3</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="name"><a href="managers/mgr_josh.html">Josh</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_adam.html">Adam</a></td>
+          <td class="num dim" title="times they have played before this season">3</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_andrew.html">Blunt</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_ben.html">Ben</a></td>
+          <td class="num dim" title="times they have played before this season">5</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_evan.html">Evan</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_jon.html">Jon</a></td>
+          <td class="num dim" title="times they have played before this season">5</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_greg.html">Greg</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_larry.html">L.J.</a></td>
+          <td class="num dim" title="times they have played before this season">5</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_sean.html">Sean</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_stephen.html">Beale</a></td>
+          <td class="num dim" title="times they have played before this season">5</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_nic.html">Nic</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_stew.html">Stew</a></td>
+          <td class="num dim" title="times they have played before this season">2</td>
+          <td class="dim"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card week">
+    <h4>Week 4</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="name"><a href="managers/mgr_josh.html">Josh</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_andrew.html">Blunt</a></td>
+          <td class="num dim" title="times they have played before this season">4</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_nic.html">Nic</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_evan.html">Evan</a></td>
+          <td class="num dim" title="times they have played before this season">4</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_ben.html">Ben</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_jon.html">Jon</a></td>
+          <td class="num dim" title="times they have played before this season">8</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_sean.html">Sean</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_larry.html">L.J.</a></td>
+          <td class="num dim" title="times they have played before this season">7</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_adam.html">Adam</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_stephen.html">Beale</a></td>
+          <td class="num dim" title="times they have played before this season">6</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_greg.html">Greg</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_stew.html">Stew</a></td>
+          <td class="num dim" title="times they have played before this season">5</td>
+          <td class="dim"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card week">
+    <h4>Week 5</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="name"><a href="managers/mgr_sean.html">Sean</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_adam.html">Adam</a></td>
+          <td class="num dim" title="times they have played before this season">7</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_larry.html">L.J.</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_andrew.html">Blunt</a></td>
+          <td class="num dim" title="times they have played before this season">7</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_evan.html">Evan</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_greg.html">Greg</a></td>
+          <td class="num dim" title="times they have played before this season">7</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_ben.html">Ben</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_josh.html">Josh</a></td>
+          <td class="num dim" title="times they have played before this season">2</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_stephen.html">Beale</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_nic.html">Nic</a></td>
+          <td class="num dim" title="times they have played before this season">4</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_jon.html">Jon</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_stew.html">Stew</a></td>
+          <td class="num dim" title="times they have played before this season">4</td>
+          <td class="dim"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card week">
+    <h4>Week 6</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="name"><a href="managers/mgr_stephen.html">Beale</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_ben.html">Ben</a></td>
+          <td class="num dim" title="times they have played before this season">5</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_stew.html">Stew</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_evan.html">Evan</a></td>
+          <td class="num dim" title="times they have played before this season">5</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_josh.html">Josh</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_greg.html">Greg</a></td>
+          <td class="num dim" title="times they have played before this season">2</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_adam.html">Adam</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_larry.html">L.J.</a></td>
+          <td class="num dim" title="times they have played before this season">4</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_andrew.html">Blunt</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_nic.html">Nic</a></td>
+          <td class="num dim" title="times they have played before this season">2</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_jon.html">Jon</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_sean.html">Sean</a></td>
+          <td class="num dim" title="times they have played before this season">4</td>
+          <td class="dim">rematch</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card week">
+    <h4>Week 7</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="name"><a href="managers/mgr_greg.html">Greg</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_adam.html">Adam</a></td>
+          <td class="num dim" title="times they have played before this season">5</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_andrew.html">Blunt</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_ben.html">Ben</a></td>
+          <td class="num dim" title="times they have played before this season">5</td>
+          <td class="dim">rematch</td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_nic.html">Nic</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_jon.html">Jon</a></td>
+          <td class="num dim" title="times they have played before this season">2</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_stephen.html">Beale</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_josh.html">Josh</a></td>
+          <td class="num dim" title="times they have played before this season">3</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_evan.html">Evan</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_larry.html">L.J.</a></td>
+          <td class="num dim" title="times they have played before this season">6</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_stew.html">Stew</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_sean.html">Sean</a></td>
+          <td class="num dim" title="times they have played before this season">8</td>
+          <td class="dim"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card week">
+    <h4>Week 8</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="name"><a href="managers/mgr_stew.html">Stew</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_adam.html">Adam</a></td>
+          <td class="num dim" title="times they have played before this season">7</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_stephen.html">Beale</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_andrew.html">Blunt</a></td>
+          <td class="num dim" title="times they have played before this season">6</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_ben.html">Ben</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_evan.html">Evan</a></td>
+          <td class="num dim" title="times they have played before this season">6</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_jon.html">Jon</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_josh.html">Josh</a></td>
+          <td class="num dim" title="times they have played before this season">4</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_greg.html">Greg</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_larry.html">L.J.</a></td>
+          <td class="num dim" title="times they have played before this season">5</td>
+          <td class="dim">rematch</td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_sean.html">Sean</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_nic.html">Nic</a></td>
+          <td class="num dim" title="times they have played before this season">2</td>
+          <td class="dim"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card week">
+    <h4>Week 9</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="name"><a href="managers/mgr_larry.html">L.J.</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_ben.html">Ben</a></td>
+          <td class="num dim" title="times they have played before this season">8</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_jon.html">Jon</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_evan.html">Evan</a></td>
+          <td class="num dim" title="times they have played before this season">5</td>
+          <td class="dim">rematch</td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_stephen.html">Beale</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_greg.html">Greg</a></td>
+          <td class="num dim" title="times they have played before this season">7</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_adam.html">Adam</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_nic.html">Nic</a></td>
+          <td class="num dim" title="times they have played before this season">4</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_andrew.html">Blunt</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_sean.html">Sean</a></td>
+          <td class="num dim" title="times they have played before this season">7</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_josh.html">Josh</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_stew.html">Stew</a></td>
+          <td class="num dim" title="times they have played before this season">3</td>
+          <td class="dim"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card week">
+    <h4>Week 10</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="name"><a href="managers/mgr_nic.html">Nic</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_andrew.html">Blunt</a></td>
+          <td class="num dim" title="times they have played before this season">2</td>
+          <td class="dim">rematch</td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_larry.html">L.J.</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_jon.html">Jon</a></td>
+          <td class="num dim" title="times they have played before this season">5</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_adam.html">Adam</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_josh.html">Josh</a></td>
+          <td class="num dim" title="times they have played before this season">3</td>
+          <td class="dim">rematch</td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_greg.html">Greg</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_sean.html">Sean</a></td>
+          <td class="num dim" title="times they have played before this season">8</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_ben.html">Ben</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_stephen.html">Beale</a></td>
+          <td class="num dim" title="times they have played before this season">5</td>
+          <td class="dim">rematch</td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_evan.html">Evan</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_stew.html">Stew</a></td>
+          <td class="num dim" title="times they have played before this season">5</td>
+          <td class="dim">rematch</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card week">
+    <h4>Week 11</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="name"><a href="managers/mgr_larry.html">L.J.</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_adam.html">Adam</a></td>
+          <td class="num dim" title="times they have played before this season">4</td>
+          <td class="dim">rematch</td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_ben.html">Ben</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_greg.html">Greg</a></td>
+          <td class="num dim" title="times they have played before this season">7</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_andrew.html">Blunt</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_jon.html">Jon</a></td>
+          <td class="num dim" title="times they have played before this season">5</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_stew.html">Stew</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_nic.html">Nic</a></td>
+          <td class="num dim" title="times they have played before this season">2</td>
+          <td class="dim">rematch</td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_josh.html">Josh</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_sean.html">Sean</a></td>
+          <td class="num dim" title="times they have played before this season">3</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_evan.html">Evan</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_stephen.html">Beale</a></td>
+          <td class="num dim" title="times they have played before this season">6</td>
+          <td class="dim"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card week">
+    <h4>Week 12</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="name"><a href="managers/mgr_greg.html">Greg</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_andrew.html">Blunt</a></td>
+          <td class="num dim" title="times they have played before this season">4</td>
+          <td class="dim">rematch</td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_josh.html">Josh</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_ben.html">Ben</a></td>
+          <td class="num dim" title="times they have played before this season">2</td>
+          <td class="dim">rematch</td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_larry.html">L.J.</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_evan.html">Evan</a></td>
+          <td class="num dim" title="times they have played before this season">6</td>
+          <td class="dim">rematch</td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_sean.html">Sean</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_nic.html">Nic</a></td>
+          <td class="num dim" title="times they have played before this season">2</td>
+          <td class="dim">rematch</td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_adam.html">Adam</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_stephen.html">Beale</a></td>
+          <td class="num dim" title="times they have played before this season">6</td>
+          <td class="dim">rematch</td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_jon.html">Jon</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_stew.html">Stew</a></td>
+          <td class="num dim" title="times they have played before this season">4</td>
+          <td class="dim">rematch</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card week">
+    <h4>Week 13</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="name"><a href="managers/mgr_stew.html">Stew</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_ben.html">Ben</a></td>
+          <td class="num dim" title="times they have played before this season">7</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_andrew.html">Blunt</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_evan.html">Evan</a></td>
+          <td class="num dim" title="times they have played before this season">7</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_adam.html">Adam</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_jon.html">Jon</a></td>
+          <td class="num dim" title="times they have played before this season">8</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_greg.html">Greg</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_josh.html">Josh</a></td>
+          <td class="num dim" title="times they have played before this season">2</td>
+          <td class="dim">rematch</td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_nic.html">Nic</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_larry.html">L.J.</a></td>
+          <td class="num dim" title="times they have played before this season">3</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_sean.html">Sean</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_stephen.html">Beale</a></td>
+          <td class="num dim" title="times they have played before this season">5</td>
+          <td class="dim">rematch</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card week rivalry">
+    <h4>Week 14 <span class="tag">Rivalry Week</span></h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="name"><a href="managers/mgr_ben.html">Ben</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_adam.html">Adam</a></td>
+          <td class="num dim" title="times they have played before this season">6</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_stew.html">Stew</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_andrew.html">Blunt</a></td>
+          <td class="num dim" title="times they have played before this season">9</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_jon.html">Jon</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_greg.html">Greg</a></td>
+          <td class="num dim" title="times they have played before this season">8</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_nic.html">Nic</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_josh.html">Josh</a></td>
+          <td class="num dim" title="times they have played before this season">2</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_stephen.html">Beale</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_larry.html">L.J.</a></td>
+          <td class="num dim" title="times they have played before this season">8</td>
+          <td class="dim"></td>
+        </tr>
+        <tr>
+          <td class="name"><a href="managers/mgr_evan.html">Evan</a></td>
+          <td class="dim">at</td>
+          <td class="name"><a href="managers/mgr_sean.html">Sean</a></td>
+          <td class="num dim" title="times they have played before this season">8</td>
+          <td class="dim"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<footer>
+  <p>Built 16 Aug 2026 from 84 games. Records follow the manager, not the team name.</p>
+  <p>Scores come from ESPN. Playoff rounds that span two weeks are marked, and excluded from single&#8209;week records.</p>
+</footer>
+</main>
+
+</body>
+</html>
