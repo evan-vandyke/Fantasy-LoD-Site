@@ -327,3 +327,176 @@ ul.plain li { margin-bottom: 0.3rem; }
 }
 .notice strong { display: block; margin-bottom: 0.25rem; }
 .notice p { margin: 0; color: var(--muted); font-size: 0.85rem; }
+
+/* ------------------------------------------------------------- suggestions
+
+   A form that pretends to throw your idea away. The bin is not in the layout at all: it
+   is fixed to the bottom of the viewport, parked off-screen, and it slides up only once a
+   submission has actually landed. A bin sitting there from the moment the page loads
+   gives the joke away and leaves the form looking like it has a mascot. */
+
+.suggest { display: grid; grid-template-columns: minmax(0, 1fr); }
+
+.suggest-form { padding: 1.1rem 1.15rem 1rem; }
+.suggest-label {
+  display: block; color: var(--muted); font-size: 0.65rem; text-transform: uppercase;
+  letter-spacing: 0.1em; font-weight: 700; margin-bottom: 0.35rem;
+}
+.suggest-form textarea, .suggest-form input[type="text"], .suggest-form select {
+  width: 100%; background: var(--bg); color: var(--text); font: inherit;
+  border: 1px solid var(--border); border-radius: 10px; padding: 0.6rem 0.7rem;
+}
+.suggest-form textarea { resize: vertical; min-height: 6.5rem; line-height: 1.45; }
+.suggest-form textarea:focus, .suggest-form input:focus, .suggest-form select:focus {
+  outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent;
+}
+.suggest-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 0.7rem; margin-top: 0.8rem; }
+
+/* The honeypot. Off-screen rather than `display: none`, which some bots test for. */
+.suggest-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.suggest-actions { display: flex; align-items: center; gap: 0.8rem; margin-top: 0.9rem; flex-wrap: wrap; }
+.suggest-send {
+  background: var(--accent); color: var(--on-accent, #fff); border: 0; border-radius: 10px;
+  padding: 0.55rem 1.25rem; font: inherit; font-weight: 800; letter-spacing: 0.01em;
+  cursor: pointer;
+}
+.suggest-send:hover { filter: brightness(1.08); }
+.suggest-send:disabled { opacity: 0.55; cursor: default; filter: none; }
+.suggest-status { margin: 0; font-size: 0.82rem; color: var(--muted); }
+.suggest-status.bad { color: var(--bad); font-weight: 600; }
+
+/* The form fades as the paper leaves it, so the eye follows the paper. */
+.suggest-form.is-trashing { opacity: 0.28; transition: opacity 0.5s ease; pointer-events: none; }
+
+/* -- the bin
+
+   Parked below the fold and slid up on submit. Fixed rather than absolute so it arrives
+   in the same place whatever the reader has scrolled to, and so it costs the form no
+   width — the box is full-width at every size now. `suggestions.js` waits for the slide
+   to settle before it measures, so the paper aims at where the can ended up. */
+
+.bin {
+  position: fixed; right: 6vw; bottom: 0; z-index: 55; pointer-events: none;
+  transform: translateY(115%); opacity: 0;
+  transition: transform 0.42s cubic-bezier(.2,1.35,.5,1), opacity 0.2s ease;
+}
+.bin.up { transform: translateY(-6vh); opacity: 1; }
+/* Leaves the way it came, but faster and without the bounce — an exit that bounces reads
+   as a second joke, and there is only one. */
+.bin.away { transform: translateY(115%); opacity: 0; transition: transform 0.34s ease-in, opacity 0.3s ease; }
+@media (max-width: 44rem) {
+  .bin { right: 50%; transform: translate(50%, 115%); }
+  .bin.up { transform: translate(50%, -4vh); }
+  .bin.away { transform: translate(50%, 115%); }
+}
+
+.bin-svg { display: block; overflow: visible; filter: drop-shadow(0 8px 18px rgba(0,0,0,0.35)); }
+.bin-lid { transform-origin: 14px 34px; transition: transform 0.22s cubic-bezier(.34,1.56,.64,1); }
+.bin-lid.open { transform: rotate(-38deg) translate(-4px, -6px); }
+.bin.stuffed .bin-body { animation: bin-wobble 0.42s ease-out; transform-origin: 60px 136px; }
+
+@keyframes bin-wobble {
+  0%   { transform: rotate(0deg); }
+  25%  { transform: rotate(-4.5deg); }
+  55%  { transform: rotate(3deg); }
+  80%  { transform: rotate(-1.5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* -- the sheet, and the ball it becomes
+
+   Crumpling used to be a border-radius morph, which reads as a blob deflating rather than
+   paper being screwed up. Three things sell it instead: the silhouette is a 12-point
+   `clip-path` that buckles inward, creases fade in as diagonal gradients, and the text
+   blurs out as it compresses — a legible sentence on a ball is what gave the old one
+   away. Fixed positioning, so a scroll mid-flight does not leave it behind. It sits
+   *under* the bin, so the last of the arc disappears behind the can rather than in front
+   of it. */
+
+.paper {
+  position: fixed; z-index: 50; margin: 0; padding: 0.6rem 0.7rem; overflow: hidden;
+  background: var(--surface-2); color: var(--muted); border: 1px solid var(--border);
+  box-shadow: var(--shadow); font: inherit; line-height: 1.45; pointer-events: none;
+  clip-path: polygon(0% 0%, 33% 0%, 67% 0%, 100% 0%, 100% 33%, 100% 67%,
+                     100% 100%, 67% 100%, 33% 100%, 0% 100%, 0% 67%, 0% 33%);
+}
+.paper-text {
+  display: block; white-space: pre-wrap; overflow: hidden;
+  transition: opacity 0.34s ease, filter 0.34s ease;
+}
+/* The creases. A pseudo-element because it has to fade in independently of the transform
+   the sheet is already carrying. */
+.paper::after {
+  content: ""; position: absolute; inset: 0; opacity: 0;
+  transition: opacity 0.4s ease;
+  background:
+    repeating-linear-gradient(58deg, rgba(0,0,0,0.20) 0 1px, transparent 1px 13px),
+    repeating-linear-gradient(-47deg, rgba(0,0,0,0.14) 0 1px, transparent 1px 9px),
+    repeating-linear-gradient(11deg, rgba(255,255,255,0.10) 0 1px, transparent 1px 17px);
+}
+.paper.crushed::after { opacity: 1; }
+.paper.crushed .paper-text { opacity: 0; filter: blur(3px); }
+/* Volume. A flat fill with a border still reads as a small card however jagged its
+   outline is; a lit side and a shaded one read as a lump. The border goes at the same
+   time — crumpled paper has no stroke around it. */
+.paper.crushed {
+  border-color: transparent;
+  background-image:
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,0.42), transparent 52%),
+    radial-gradient(circle at 72% 78%, rgba(0,0,0,0.30), transparent 58%);
+}
+
+/* -- what the page says once it has landed */
+
+.suggest-done { padding: 1.2rem 1.25rem; }
+.suggest-done-head { margin: 0; font-size: 1.35rem; font-weight: 800; letter-spacing: -0.02em; }
+.suggest-done-sub { margin: 0.35rem 0 0; color: var(--muted); font-size: 0.9rem; }
+/* The line that keeps the joke honest. Without it, the third person to submit something
+   assumes the bin is real and stops bothering.
+   It arrives late on purpose. Landing at the same moment as "Straight in the bin" steps
+   on the joke; a beat of silence first lets the bin land, and then the admission is the
+   punchline rather than a footnote. `suggestions.js` adds `.shown`. */
+.suggest-done-real {
+  margin: 0.9rem 0 0; padding-top: 0.8rem; border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+  opacity: 0; transform: translateY(6px);
+  transition: opacity 0.45s ease, transform 0.45s cubic-bezier(.2,.9,.3,1);
+}
+.suggest-done-real.shown { opacity: 1; transform: none; }
+.suggest-done-real a { color: var(--accent); }
+.suggest-off { padding: 1rem 1.15rem; border-style: dashed; }
+.suggest-off p { margin: 0 0 0.3rem; }
+
+/* -- the archive */
+
+.crumple {
+  padding: 0.95rem 1.05rem 1rem; display: flex; flex-direction: column;
+  /* Not square: these are pieces of paper that have been screwed up and flattened out. */
+  border-radius: 14px 20px 12px 22px;
+}
+/* Still in the bin is the common case, so it gets the quiet badge and the accent is saved
+   for the ones that got out. Tagging every card in the league colour said nothing at all:
+   the point of the list is that you can see which two of five went somewhere. */
+.crumple .tag {
+  background: var(--surface-2); color: var(--muted);
+  border: 1px solid var(--border); white-space: normal;
+}
+.crumple.escaped { border-color: var(--accent); }
+.crumple.escaped .tag { background: var(--accent); color: var(--on-accent, #fff); border-color: transparent; }
+.crumple-head { display: flex; align-items: center; gap: 0.5rem; justify-content: space-between; }
+.crumple-date { font-size: 0.72rem; white-space: nowrap; }
+.crumple-text { margin: 0.6rem 0 0; font-size: 0.95rem; }
+.crumple-by { margin: 0.45rem 0 0; color: var(--muted); font-size: 0.8rem; font-style: italic; }
+.crumple-note {
+  margin: 0.7rem 0 0; padding-top: 0.6rem; border-top: 1px dashed var(--border);
+  font-size: 0.83rem; color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bin, .bin-lid, .suggest-form.is-trashing, .paper::after, .paper-text { transition: none; }
+  .bin.stuffed .bin-body { animation: none; }
+  /* The honest line is held back for timing, not for decoration. With motion off there is
+     no bin to wait for, so it is simply there. */
+  .suggest-done-real { opacity: 1; transform: none; transition: none; }
+}
