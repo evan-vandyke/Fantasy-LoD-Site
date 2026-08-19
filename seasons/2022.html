@@ -47,147 +47,170 @@
 </head>
 <body>
 
+<div class="shell">
 
-<header class="masthead">
-  <div class="wrap">
-    <h1><a href="../index.html">League of Destiny</a></h1>
-    <p class="tagline">2022&ndash;2025 &middot; 14 managers &middot; 382 games on record</p>
-    <nav class="tabs">
-      <a href="../index.html" >Home</a>
-      <a href="../records.html" >Records</a>
-      <a href="../awards.html" >Awards</a>
-      <a href="../superlatives.html" >Superlatives</a>
-      <a href="../h2h.html" >Head&#8209;to&#8209;head</a>
-      <a href="../schedule.html" >Schedule</a>
-      <a href="../managers.html" >Managers</a>
-      <a href="../moves.html" >Moves</a>
-      <a href="../suggestions.html" >Suggestions</a>
-      <a href="../seasons/2026.html" >2026</a>
-      <details class="menu">
-        <summary class="active">Previous Seasons</summary>
-        <div class="menu-items">
-          <a href="../seasons/2025.html" >2025</a>
-          <a href="../seasons/2024.html" >2024</a>
-          <a href="../seasons/2023.html" >2023</a>
-          <a href="../seasons/2022.html" class="active">2022</a>
+<aside class="rail">
+  <a class="rail-mark" href="../index.html">
+    <span class="rail-name">League of Destiny</span>
+    <span class="rail-tag">2022&ndash;2025 &middot; 14 managers</span>
+  </a><button type="button" class="rail-jump" data-open-jump aria-haspopup="dialog">
+    <svg class="rail-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.2-3.2"></path></svg>
+    <span class="rail-jump-label">Jump to&hellip;</span>
+    <span class="rail-jump-key">&#8984;K</span>
+  </button>
+
+  <nav class="rail-nav">
+    <a class="rail-item rail-home" href="../index.html">
+      <svg class="rail-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11 12 4l8 7"></path><path d="M6 10v9h12v-9"></path></svg>Home
+    </a><div class="rail-group">
+      <p class="rail-label">The season</p>
+      <a class="rail-item" href="../seasons/2026.html">
+        2026      </a>
+      <a class="rail-item" href="../schedule.html">Schedule</a>
+      <a class="rail-item" href="../awards.html">Awards</a>
+      <div class="rail-archive">
+        <a class="rail-chip" href="../seasons/2025.html">2025</a>
+        <a class="rail-chip" href="../seasons/2024.html">2024</a>
+        <a class="rail-chip" href="../seasons/2023.html">2023</a>
+        <a class="rail-chip active" href="../seasons/2022.html">2022</a>
+      </div>
+    </div>
+
+    <div class="rail-group">
+      <p class="rail-label">The record</p>
+      <a class="rail-item" href="../records.html">Record book</a>
+      <a class="rail-item" href="../superlatives.html">Superlatives</a>
+      <a class="rail-item" href="../h2h.html">Head&#8209;to&#8209;head</a>
+    </div>
+
+    <div class="rail-group">
+      <p class="rail-label">The league</p>
+      <a class="rail-item" href="../managers.html">Managers</a>
+      <a class="rail-item" href="../moves.html">Moves</a>
+    </div>
+  </nav>
+
+  <div class="rail-foot">
+    <a class="rail-item rail-quiet" href="../suggestions.html">Suggestions</a>
+<details class="picker">
+      <summary>
+        <span class="picker-dot"></span>
+        <span class="picker-name"></span>
+        <span class="visually-hidden">Appearance</span>
+      </summary>
+      <div class="picker-items">
+        <p class="picker-label">Background</p>
+        <div class="picker-row">
+          <button type="button" data-set-theme="">Auto</button>
+          <button type="button" data-set-theme="light">Light</button>
+          <button type="button" data-set-theme="dark">Dark</button>
         </div>
-      </details>
-<details class="menu picker">
-        <summary>Appearance</summary>
-        <div class="menu-items picker-items">
-          <p class="picker-label">Background</p>
-          <div class="picker-row">
-            <button type="button" data-set-theme="">Auto</button>
-            <button type="button" data-set-theme="light">Light</button>
-            <button type="button" data-set-theme="dark">Dark</button>
-          </div>
-          <p class="picker-label">Accent</p>
-          <div class="picker-row teams">
-            <button type="button" class="default" data-set-team="" title="Washington Commanders">
-              <span class="dot" style="background: var(--team-commanders)"></span>League default
-            </button>
-            <button type="button" data-set-team="49ers">
-              <span class="dot" style="background: var(--team-49ers)"></span>49ers
-            </button>
-            <button type="button" data-set-team="bears">
-              <span class="dot" style="background: var(--team-bears)"></span>Bears
-            </button>
-            <button type="button" data-set-team="bengals">
-              <span class="dot" style="background: var(--team-bengals)"></span>Bengals
-            </button>
-            <button type="button" data-set-team="bills">
-              <span class="dot" style="background: var(--team-bills)"></span>Bills
-            </button>
-            <button type="button" data-set-team="broncos">
-              <span class="dot" style="background: var(--team-broncos)"></span>Broncos
-            </button>
-            <button type="button" data-set-team="browns">
-              <span class="dot" style="background: var(--team-browns)"></span>Browns
-            </button>
-            <button type="button" data-set-team="buccaneers">
-              <span class="dot" style="background: var(--team-buccaneers)"></span>Buccaneers
-            </button>
-            <button type="button" data-set-team="cardinals">
-              <span class="dot" style="background: var(--team-cardinals)"></span>Cardinals
-            </button>
-            <button type="button" data-set-team="chargers">
-              <span class="dot" style="background: var(--team-chargers)"></span>Chargers
-            </button>
-            <button type="button" data-set-team="chiefs">
-              <span class="dot" style="background: var(--team-chiefs)"></span>Chiefs
-            </button>
-            <button type="button" data-set-team="colts">
-              <span class="dot" style="background: var(--team-colts)"></span>Colts
-            </button>
-            <button type="button" data-set-team="commanders">
-              <span class="dot" style="background: var(--team-commanders)"></span>Commanders
-            </button>
-            <button type="button" data-set-team="cowboys">
-              <span class="dot" style="background: var(--team-cowboys)"></span>Cowboys
-            </button>
-            <button type="button" data-set-team="dolphins">
-              <span class="dot" style="background: var(--team-dolphins)"></span>Dolphins
-            </button>
-            <button type="button" data-set-team="eagles">
-              <span class="dot" style="background: var(--team-eagles)"></span>Eagles
-            </button>
-            <button type="button" data-set-team="falcons">
-              <span class="dot" style="background: var(--team-falcons)"></span>Falcons
-            </button>
-            <button type="button" data-set-team="giants">
-              <span class="dot" style="background: var(--team-giants)"></span>Giants
-            </button>
-            <button type="button" data-set-team="jaguars">
-              <span class="dot" style="background: var(--team-jaguars)"></span>Jaguars
-            </button>
-            <button type="button" data-set-team="jets">
-              <span class="dot" style="background: var(--team-jets)"></span>Jets
-            </button>
-            <button type="button" data-set-team="lions">
-              <span class="dot" style="background: var(--team-lions)"></span>Lions
-            </button>
-            <button type="button" data-set-team="packers">
-              <span class="dot" style="background: var(--team-packers)"></span>Packers
-            </button>
-            <button type="button" data-set-team="panthers">
-              <span class="dot" style="background: var(--team-panthers)"></span>Panthers
-            </button>
-            <button type="button" data-set-team="patriots">
-              <span class="dot" style="background: var(--team-patriots)"></span>Patriots
-            </button>
-            <button type="button" data-set-team="raiders">
-              <span class="dot" style="background: var(--team-raiders)"></span>Raiders
-            </button>
-            <button type="button" data-set-team="rams">
-              <span class="dot" style="background: var(--team-rams)"></span>Rams
-            </button>
-            <button type="button" data-set-team="ravens">
-              <span class="dot" style="background: var(--team-ravens)"></span>Ravens
-            </button>
-            <button type="button" data-set-team="saints">
-              <span class="dot" style="background: var(--team-saints)"></span>Saints
-            </button>
-            <button type="button" data-set-team="seahawks">
-              <span class="dot" style="background: var(--team-seahawks)"></span>Seahawks
-            </button>
-            <button type="button" data-set-team="steelers">
-              <span class="dot" style="background: var(--team-steelers)"></span>Steelers
-            </button>
-            <button type="button" data-set-team="texans">
-              <span class="dot" style="background: var(--team-texans)"></span>Texans
-            </button>
-            <button type="button" data-set-team="titans">
-              <span class="dot" style="background: var(--team-titans)"></span>Titans
-            </button>
-            <button type="button" data-set-team="vikings">
-              <span class="dot" style="background: var(--team-vikings)"></span>Vikings
-            </button>
-          </div>
+        <p class="picker-label">Accent</p>
+        <div class="picker-row teams">
+          <button type="button" class="default" data-set-team="" title="Washington Commanders">
+            <span class="dot" style="background: var(--team-commanders)"></span>League default
+          </button>
+          <button type="button" data-set-team="49ers">
+            <span class="dot" style="background: var(--team-49ers)"></span>49ers
+          </button>
+          <button type="button" data-set-team="bears">
+            <span class="dot" style="background: var(--team-bears)"></span>Bears
+          </button>
+          <button type="button" data-set-team="bengals">
+            <span class="dot" style="background: var(--team-bengals)"></span>Bengals
+          </button>
+          <button type="button" data-set-team="bills">
+            <span class="dot" style="background: var(--team-bills)"></span>Bills
+          </button>
+          <button type="button" data-set-team="broncos">
+            <span class="dot" style="background: var(--team-broncos)"></span>Broncos
+          </button>
+          <button type="button" data-set-team="browns">
+            <span class="dot" style="background: var(--team-browns)"></span>Browns
+          </button>
+          <button type="button" data-set-team="buccaneers">
+            <span class="dot" style="background: var(--team-buccaneers)"></span>Buccaneers
+          </button>
+          <button type="button" data-set-team="cardinals">
+            <span class="dot" style="background: var(--team-cardinals)"></span>Cardinals
+          </button>
+          <button type="button" data-set-team="chargers">
+            <span class="dot" style="background: var(--team-chargers)"></span>Chargers
+          </button>
+          <button type="button" data-set-team="chiefs">
+            <span class="dot" style="background: var(--team-chiefs)"></span>Chiefs
+          </button>
+          <button type="button" data-set-team="colts">
+            <span class="dot" style="background: var(--team-colts)"></span>Colts
+          </button>
+          <button type="button" data-set-team="commanders">
+            <span class="dot" style="background: var(--team-commanders)"></span>Commanders
+          </button>
+          <button type="button" data-set-team="cowboys">
+            <span class="dot" style="background: var(--team-cowboys)"></span>Cowboys
+          </button>
+          <button type="button" data-set-team="dolphins">
+            <span class="dot" style="background: var(--team-dolphins)"></span>Dolphins
+          </button>
+          <button type="button" data-set-team="eagles">
+            <span class="dot" style="background: var(--team-eagles)"></span>Eagles
+          </button>
+          <button type="button" data-set-team="falcons">
+            <span class="dot" style="background: var(--team-falcons)"></span>Falcons
+          </button>
+          <button type="button" data-set-team="giants">
+            <span class="dot" style="background: var(--team-giants)"></span>Giants
+          </button>
+          <button type="button" data-set-team="jaguars">
+            <span class="dot" style="background: var(--team-jaguars)"></span>Jaguars
+          </button>
+          <button type="button" data-set-team="jets">
+            <span class="dot" style="background: var(--team-jets)"></span>Jets
+          </button>
+          <button type="button" data-set-team="lions">
+            <span class="dot" style="background: var(--team-lions)"></span>Lions
+          </button>
+          <button type="button" data-set-team="packers">
+            <span class="dot" style="background: var(--team-packers)"></span>Packers
+          </button>
+          <button type="button" data-set-team="panthers">
+            <span class="dot" style="background: var(--team-panthers)"></span>Panthers
+          </button>
+          <button type="button" data-set-team="patriots">
+            <span class="dot" style="background: var(--team-patriots)"></span>Patriots
+          </button>
+          <button type="button" data-set-team="raiders">
+            <span class="dot" style="background: var(--team-raiders)"></span>Raiders
+          </button>
+          <button type="button" data-set-team="rams">
+            <span class="dot" style="background: var(--team-rams)"></span>Rams
+          </button>
+          <button type="button" data-set-team="ravens">
+            <span class="dot" style="background: var(--team-ravens)"></span>Ravens
+          </button>
+          <button type="button" data-set-team="saints">
+            <span class="dot" style="background: var(--team-saints)"></span>Saints
+          </button>
+          <button type="button" data-set-team="seahawks">
+            <span class="dot" style="background: var(--team-seahawks)"></span>Seahawks
+          </button>
+          <button type="button" data-set-team="steelers">
+            <span class="dot" style="background: var(--team-steelers)"></span>Steelers
+          </button>
+          <button type="button" data-set-team="texans">
+            <span class="dot" style="background: var(--team-texans)"></span>Texans
+          </button>
+          <button type="button" data-set-team="titans">
+            <span class="dot" style="background: var(--team-titans)"></span>Titans
+          </button>
+          <button type="button" data-set-team="vikings">
+            <span class="dot" style="background: var(--team-vikings)"></span>Vikings
+          </button>
         </div>
-      </details>
-    </nav>
+      </div>
+    </details>
   </div>
-</header>
+</aside>
 
 <main class="wrap">
 
@@ -3807,10 +3830,23 @@ Winner    </div>
 
 
 <footer>
-  <p>Built 18 Aug 2026 from 382 games. Records follow the manager, not the team name.</p>
+  <p>Built 19 Aug 2026 from 382 games. Records follow the manager, not the team name.</p>
   <p>Scores come from ESPN. Playoff rounds that span two weeks are marked, and excluded from single&#8209;week records.</p>
 </footer>
 </main>
+
+</div><div class="jump" id="jump" hidden>
+  <div class="jump-backdrop" data-close-jump></div>
+  <div class="jump-panel" role="dialog" aria-modal="true" aria-label="Jump to">
+    <div class="jump-search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.75" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.2-3.2"></path></svg>
+      <input type="search" id="jump-input" autocomplete="off" spellcheck="false" placeholder="Type a year, a manager or a record">
+    </div>
+    <div class="jump-results" id="jump-results"></div>
+    <p class="jump-foot">Type a year, a manager or a record. Esc to close.</p>
+  </div>
+</div><script type="application/json" id="jump-index" data-root="../">[{"detail": "35\u201331 \u00b7 4 seasons", "group": "Managers", "href": "managers/mgr_adam.html", "label": "Adam"}, {"detail": "36\u201330 \u00b7 4 seasons", "group": "Managers", "href": "managers/mgr_stephen.html", "label": "Beale"}, {"detail": "32\u201332 \u00b7 4 seasons", "group": "Managers", "href": "managers/mgr_ben.html", "label": "Ben"}, {"detail": "26\u201340 \u00b7 4 seasons", "group": "Managers", "href": "managers/mgr_andrew.html", "label": "Blunt"}, {"detail": "6\u201310 \u00b7 1 season", "group": "Managers", "href": "managers/mgr_brittany.html", "label": "Brittany"}, {"detail": "7\u201310 \u00b7 1 season", "group": "Managers", "href": "managers/mgr_daniel.html", "label": "Daniel"}, {"detail": "31\u201335 \u00b7 4 seasons", "group": "Managers", "href": "managers/mgr_evan.html", "label": "Evan"}, {"detail": "32\u201334 \u00b7 4 seasons", "group": "Managers", "href": "managers/mgr_greg.html", "label": "Greg"}, {"detail": "31\u201334 \u00b7 4 seasons", "group": "Managers", "href": "managers/mgr_jon.html", "label": "Jon"}, {"detail": "16\u201317 \u00b7 2 seasons", "group": "Managers", "href": "managers/mgr_josh.html", "label": "Josh"}, {"detail": "39\u201327 \u00b7 4 seasons", "group": "Managers", "href": "managers/mgr_larry.html", "label": "L.J."}, {"detail": "21\u201313 \u00b7 2 seasons", "group": "Managers", "href": "managers/mgr_nic.html", "label": "Nic"}, {"detail": "32\u201334 \u00b7 4 seasons", "group": "Managers", "href": "managers/mgr_sean.html", "label": "Sean"}, {"detail": "34\u201331 \u00b7 4 seasons", "group": "Managers", "href": "managers/mgr_stew.html", "label": "Stew"}, {"detail": "not started", "group": "Seasons", "href": "seasons/2026.html", "label": "2026"}, {"detail": "Ben won it", "group": "Seasons", "href": "seasons/2025.html", "label": "2025"}, {"detail": "Stew won it", "group": "Seasons", "href": "seasons/2024.html", "label": "2024"}, {"detail": "Beale won it", "group": "Seasons", "href": "seasons/2023.html", "label": "2023"}, {"detail": "L.J. won it", "group": "Seasons", "href": "seasons/2022.html", "label": "2022"}, {"detail": "Sean \u00b7 192.68", "group": "Records", "href": "records.html#highest-weeks", "label": "Highest scoring week"}, {"detail": "Blunt \u00b7 41.80", "group": "Records", "href": "records.html#lowest-weeks", "label": "Lowest scoring week"}, {"detail": "Sean \u00b7 149.70", "group": "Records", "href": "records.html#highest-scoring-losses", "label": "Highest scoring loss"}, {"detail": "Beale \u00b7 64.98", "group": "Records", "href": "records.html#lowest-scoring-wins", "label": "Lowest scoring win"}, {"detail": "Ben \u00b7 105.16", "group": "Records", "href": "records.html#biggest-blowouts", "label": "Biggest blowout"}, {"detail": "L.J. \u00b7 0.04", "group": "Records", "href": "records.html#narrowest-wins", "label": "Narrowest win"}, {"detail": "L.J. \u00b7 10 games", "group": "Records", "href": "records.html#longest-win-streaks", "label": "Longest win streak"}, {"detail": "Ben \u00b7 7 games", "group": "Records", "href": "records.html#longest-loss-streaks", "label": "Longest losing streak"}, {"detail": "the all-time table", "group": "Pages", "href": "index.html", "label": "Home"}, {"detail": "every all-time list", "group": "Pages", "href": "records.html", "label": "Record book"}, {"detail": "the weekly trophies", "group": "Pages", "href": "awards.html", "label": "Awards"}, {"detail": "the honourable mentions", "group": "Pages", "href": "superlatives.html", "label": "Superlatives"}, {"detail": "every pairing", "group": "Pages", "href": "h2h.html", "label": "Head-to-head"}, {"detail": "who plays who", "group": "Pages", "href": "schedule.html", "label": "Schedule"}, {"detail": "every profile", "group": "Pages", "href": "managers.html", "label": "Managers"}, {"detail": "trades and waivers", "group": "Pages", "href": "moves.html", "label": "Moves"}, {"detail": "the bin", "group": "Pages", "href": "suggestions.html", "label": "Suggestions"}]</script>
+<script src="../static/jump.js" defer></script>
 
 </body>
 </html>

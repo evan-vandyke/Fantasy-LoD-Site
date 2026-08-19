@@ -42,80 +42,175 @@
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.5 var(--sans); }
 .wrap { max-width: 72rem; margin: 0 auto; padding: 0 1.2rem 4rem; }
+/* The page's own column. The masthead used to carry the gap under it as a margin; the
+   rail is beside the content rather than above it, so the content owns its top edge. */
+/* `width` rather than letting it stretch: `.wrap` centres itself with `margin: 0 auto`,
+   and an auto inline margin stops a grid item stretching to its track — it sizes to its
+   content instead, which is a 60rem table, and the page scrolls sideways. */
+main.wrap { width: 100%; padding: 2.2rem 2.2rem 4rem; }
+@media (max-width: 900px) { main.wrap { padding: 1.6rem 1.2rem 4rem; } }
 
-/* The masthead is a block of the team's own colour — the scoreboard-card treatment, where
-   the band *is* the identity rather than a neutral bar with a coloured edge. theme.css
-   publishes the fill and everything that has to read on top of it, for all 32 teams and
-   both backgrounds, so nothing here needs to know which team is showing.
+/* ------------------------------------------------------------------ the shell
 
-   The page palette is deliberately left alone: a dropdown anchored in this band is still a
-   normal menu on a normal surface, and it inherits --surface and --text as usual. */
-header.masthead {
+   Two columns: a standing rail of team colour, and the page beside it. The rail *is*
+   the identity — the same idea the masthead band had, given the whole left edge, so
+   twelve destinations can be grouped and read at once instead of wrapping into a second
+   row of pills where nothing is primary.
+
+   theme.css publishes the fill and everything that has to read on top of it, for all 32
+   teams and both backgrounds, so nothing here needs to know which team is showing. The
+   page palette is deliberately left alone: a panel anchored in the rail but floating
+   over the page is still a normal menu on a normal surface, and it inherits --surface
+   and --text as usual. */
+
+.shell { display: grid; grid-template-columns: 268px minmax(0, 1fr); align-items: start; }
+/* A grid item is as wide as its widest content unless told otherwise, and the record
+   book is a 60rem table. Without this the page scrolls sideways instead of the table
+   scrolling inside its own card, which is the whole point of `.scroll`. */
+.shell > * { min-width: 0; }
+
+.rail {
+  position: sticky; top: 0; z-index: 10; align-self: start; height: 100vh;
+  display: flex; flex-direction: column; gap: 1.1rem;
+  padding: 1.65rem 1.1rem;
   background: var(--fill); color: var(--on-fill);
-  border-bottom: 3px solid var(--pill); margin-bottom: 2rem;
+  /* No border: the block of colour is the edge. The scroll is for a short window —
+     a laptop at 700px tall would otherwise put the appearance button below the fold
+     with no way to reach it. */
+  overflow-y: auto;
 }
-.masthead .wrap { padding-top: 1.8rem; padding-bottom: 0; }
-.masthead h1 {
-  font-size: clamp(1.6rem, 4.5vw, 2.4rem); font-weight: 800;
-  letter-spacing: -0.035em; margin: 0 0 0.2rem; text-transform: uppercase;
-}
-/* Plain, not a gradient across two colours: the band already says which team this is, and
-   a fade underneath it read as a rainbow rather than as a badge. */
-.masthead h1 a { color: var(--on-fill); text-decoration: none; }
-.masthead .tagline {
-  color: var(--on-fill-muted); font-size: 0.78rem; margin: 0 0 1rem;
-  font-variant-numeric: tabular-nums; letter-spacing: 0.02em;
-}
-nav.tabs { display: flex; flex-wrap: wrap; gap: 0.3rem; padding-bottom: 0.7rem; }
-nav.tabs a {
-  padding: 0.42rem 0.85rem; color: var(--on-fill-muted); text-decoration: none;
-  font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
-  border-radius: 999px; border: 1px solid transparent;
-}
-nav.tabs a:hover { color: var(--on-fill); background: var(--fill-soft); }
-/* The active tab wears the team's second colour when it stands out on the band — gold on
-   Packers green, silver on Raiders black — and plain white or black when it would not. */
-nav.tabs a.active { color: var(--on-pill); background: var(--pill); }
+/* The dev banner is sticky and outranks everything, so the rail starts below it rather
+   than sliding underneath and losing its wordmark on the first scroll. */
+.shell-banner .rail { top: 2.4rem; height: calc(100vh - 2.4rem); }
 
-/* The season menu. `details` gives a dropdown that opens on click with no script behind
-   it — the marker is removed so the summary reads as one more tab until it is used. */
-nav.tabs details.menu { position: relative; }
-nav.tabs summary {
-  padding: 0.42rem 0.85rem; color: var(--on-fill-muted); cursor: pointer;
-  font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
-  border-radius: 999px; border: 1px solid transparent; list-style: none;
-  /* Without this, opening the menu twice selects the word instead. */
+.rail a { text-decoration: none; }
+.rail a:hover { text-decoration: none; }
+
+/* -- wordmark */
+
+.rail-mark { display: flex; flex-direction: column; gap: 2px; }
+.rail-name {
+  font-size: 23px; line-height: 1.05; font-weight: 800;
+  letter-spacing: -0.025em; text-transform: uppercase; color: var(--on-fill);
+}
+.rail-tag {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--on-fill-muted); font-variant-numeric: tabular-nums;
+}
+
+/* -- jump-to button
+
+   Hidden until `jump.js` marks the page, which is stricter than the picker's `:root.js`
+   gate on purpose: the picker needs the head script, and this button needs a second
+   file to have loaded as well. It opens a dialog, and a button that opens nothing is
+   worse than no button. Every destination it offers is also a link in this rail or on a
+   page it links to, so nothing is only reachable through it. */
+
+.rail-jump { display: none; }
+:root.can-jump .rail-jump {
+  display: flex; align-items: center; gap: 0.55rem;
+  width: 100%; height: 34px; padding: 0 0.825rem;
+  border: 1px solid var(--fill-soft); border-radius: 999px;
+  background: var(--fill-soft); color: var(--on-fill-muted);
+  font: inherit; font-size: 13px; white-space: nowrap; text-align: left; cursor: pointer;
+}
+.rail-jump:hover { border-color: var(--pill); color: var(--on-fill); }
+.rail-icon { flex: none; }
+.rail-jump-label { flex: 1; }
+.rail-jump-key {
+  flex: none; font-size: 11px; font-weight: 700; padding: 1px 6px;
+  border-radius: 6px; background: var(--fill-soft);
+}
+
+/* -- groups and items */
+
+.rail-nav { display: flex; flex-direction: column; gap: 1.1rem; }
+.rail-group { display: flex; flex-direction: column; gap: 2px; }
+.rail-label {
+  margin: 0 0 4px; padding: 0 0.825rem;
+  font-size: 10.5px; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--on-fill-muted);
+}
+
+.rail-item {
+  display: flex; align-items: center; gap: 0.55rem;
+  padding: 8px 0.825rem; border-radius: 999px;
+  color: var(--on-fill); font-size: 14px; font-weight: 600;
+}
+.rail-item:hover { background: var(--fill-soft); }
+.rail-home { padding: 9px 0.825rem; font-weight: 700; }
+/* The active item wears the team's second colour when it stands out on the fill — gold
+   on Packers green, silver on Raiders black — and plain white or black when it would
+   not. theme.css has already made that call. */
+.rail-item.active, .rail-item.active:hover { color: var(--on-pill); background: var(--pill); }
+
+/* The season in flight. The dot and the tag are a claim that a game is being played
+   right now, so the template only renders them when one is. */
+.rail-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex: none;
+  background: var(--pill); box-shadow: 0 0 0 4px var(--fill-soft);
+}
+.rail-item.active .rail-dot { background: var(--on-pill); box-shadow: none; }
+.rail-tagpill {
+  margin-left: auto; padding: 2px 8px; border-radius: 999px;
+  font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+  background: var(--pill); color: var(--on-pill);
+}
+.rail-item.active .rail-tagpill { background: var(--on-pill); color: var(--pill); }
+
+/* The archive. Four to six years fit as chips, which is what retired the "Previous
+   Seasons" dropdown — a menu to reach 2023 was never worth the click. */
+.rail-archive { display: flex; gap: 4px; padding-top: 6px; }
+.rail-chip {
+  flex: 1; text-align: center; padding: 5px 0; border-radius: 999px;
+  background: var(--fill-soft); color: var(--on-fill);
+  font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums;
+}
+.rail-chip.active { background: var(--pill); color: var(--on-pill); }
+
+/* -- foot */
+
+.rail-foot {
+  position: relative; margin-top: auto;
+  display: flex; align-items: center; gap: 6px;
+  padding-top: 0.825rem; border-top: 1px solid var(--fill-soft);
+}
+.rail-quiet { flex: 1; color: var(--on-fill-muted); font-size: 13px; }
+
+/* -- the appearance picker
+
+   The control it always was, re-anchored to the foot of the rail. Hidden until the
+   script adds `js` to <html>: without it the buttons cannot do anything, and a dead
+   control is worse than no control. */
+
+.picker { display: none; }
+:root.js .picker { display: block; margin-left: auto; }
+.picker summary {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 34px; padding: 0 10px; border-radius: 999px;
+  border: 1px solid var(--fill-soft); background: var(--fill-soft); color: var(--on-fill);
+  font-size: 12px; font-weight: 700; white-space: nowrap; cursor: pointer;
+  list-style: none;
+  /* Without this, opening the menu twice selects the label instead. */
   user-select: none; -webkit-user-select: none;
 }
-nav.tabs summary::-webkit-details-marker { display: none; }
-nav.tabs summary::after { content: " \25BE"; }
-nav.tabs summary:hover, nav.tabs details[open] summary { color: var(--on-fill); background: var(--fill-soft); }
-/* Opening the menu must not stop it saying where you are, so the active state outranks
-   the open one — hence the repeat rather than one `summary.active` rule. */
-nav.tabs summary.active, nav.tabs details[open] summary.active {
-  color: var(--on-pill); background: var(--pill);
+.picker summary::-webkit-details-marker { display: none; }
+.picker summary:hover, .picker[open] summary { border-color: var(--pill); }
+.picker-dot {
+  width: 11px; height: 11px; border-radius: 50%; flex: none; background: var(--pill);
 }
-nav.tabs .menu-items {
-  position: absolute; z-index: 20; top: calc(100% + 0.3rem); left: 0;
-  display: grid; grid-template-columns: repeat(2, minmax(3.6rem, 1fr)); gap: 0.15rem;
-  padding: 0.35rem; background: var(--surface);
-  border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow);
-}
-/* Inside a dropdown we are off the coloured band and back on an ordinary surface, so the
-   links go back to the page's own colours rather than the ones that read on the fill. */
-nav.tabs .menu-items a { text-align: center; font-variant-numeric: tabular-nums; color: var(--muted); }
-nav.tabs .menu-items a:hover { color: var(--text); background: var(--surface-2); }
-nav.tabs .menu-items a.active { color: var(--on-accent); background: var(--accent); }
+/* The name of the team currently showing. It is the reader's own pick, which lives in
+   an attribute on <html> and nowhere else, so it is read from a variable the same way
+   every colour in the rail is rather than by giving the one script a second job.
+   theme.css defines --team-nickname for all 32. */
+.picker-name::after { content: var(--team-nickname, "Appearance"); }
 
-/* The appearance picker. Hidden until the script adds `js` to <html>: without it the
-   buttons cannot do anything, and a dead control is worse than no control. */
-nav.tabs details.picker { display: none; }
-:root.js nav.tabs details.picker { display: block; margin-left: auto; }
-nav.tabs .picker-items {
-  display: block; right: 0; left: auto;
-  /* A fixed width, not max-content: an auto-fill grid inside a shrink-to-fit box
-     resolves to one column, and the 32 teams need to read as a grid. */
-  width: min(23rem, calc(100vw - 2.4rem));
+.picker-items {
+  position: absolute; z-index: 20; bottom: calc(100% + 8px); right: 0;
+  width: 236px; padding: 0.55rem;
+  background: var(--surface); color: var(--text);
+  border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow);
+  /* 33 buttons is taller than a laptop. */
   max-height: min(26rem, 70vh); overflow-y: auto;
 }
 .picker-label {
@@ -124,7 +219,7 @@ nav.tabs .picker-items {
 }
 .picker-label:first-child { margin-top: 0; }
 .picker-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.15rem; }
-.picker-row.teams { grid-template-columns: repeat(auto-fill, minmax(6.6rem, 1fr)); }
+.picker-row.teams { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .picker-row button {
   display: flex; align-items: center; gap: 0.35rem;
   padding: 0.35rem 0.5rem; border: 1px solid transparent; border-radius: 999px;
@@ -137,6 +232,83 @@ nav.tabs .picker-items {
 .picker-row .dot {
   width: 0.6rem; height: 0.6rem; border-radius: 50%; flex: none;
   box-shadow: 0 0 0 1px rgba(128,128,128,0.35);
+}
+
+/* -- the jump-to palette
+
+   Markup with nothing to open it: `jump.js` fills the results in and unhides the
+   dialog, and with scripting off it stays exactly as the server sent it, which is
+   `hidden`. */
+
+.jump { position: fixed; inset: 0; z-index: 40; }
+.jump-backdrop { position: absolute; inset: 0; background: rgba(8, 10, 15, 0.42); }
+.jump-panel {
+  position: absolute; top: 120px; left: 50%; transform: translateX(-50%);
+  width: min(520px, calc(100vw - 2.4rem));
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden;
+}
+.jump-search {
+  display: flex; align-items: center; gap: 0.55rem;
+  padding: 1.1rem; border-bottom: 1px solid var(--border);
+}
+.jump-search input {
+  flex: 1; min-width: 0; border: 0; background: none; color: var(--text);
+  font: inherit; font-size: 17px; outline: none;
+}
+.jump-search input::-webkit-search-cancel-button { display: none; }
+
+.jump-results { padding: 0.55rem; max-height: min(24rem, 50vh); overflow-y: auto; }
+.jump-group {
+  margin: 0.55rem 0.825rem 0.275rem;
+  font-size: 10.5px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted);
+}
+.jump-group:first-child { margin-top: 0.275rem; }
+.jump-row {
+  display: flex; align-items: center; gap: 0.55rem;
+  padding: 9px 0.825rem; border-radius: var(--radius);
+  color: var(--text); font-size: 15px; font-weight: 400;
+}
+.jump-row .jump-detail { margin-left: auto; font-size: 12px; color: var(--muted); }
+.jump-row.is-on { background: var(--accent-soft); font-weight: 700; }
+.jump-empty { padding: 9px 0.825rem; color: var(--muted); font-size: 14px; }
+.jump-foot {
+  margin: 0; padding: 10px 1.1rem; border-top: 1px solid var(--border);
+  font-size: 11.5px; color: var(--muted);
+}
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* -- narrow
+
+   One column, and the rail becomes a band across the top. Same markup and same classes:
+   the group labels are the affordance that makes a 268px column readable and they earn
+   nothing on a phone, so they go, and the items flow as one wrapping row of pills —
+   which is what the header always was, minus the wrapping that made it unreadable. */
+
+@media (max-width: 900px) {
+  .shell { grid-template-columns: minmax(0, 1fr); }
+  .rail, .shell-banner .rail {
+    position: static; height: auto; gap: 0.6rem; padding: 0.9rem 1.2rem;
+    overflow: visible;
+  }
+  /* Tighter than the rail, because this is a band a reader scrolls past to reach the
+     page rather than a column they read alongside it. */
+  .rail-name { font-size: 19px; }
+  .rail-nav { flex-direction: row; flex-wrap: wrap; gap: 4px; }
+  /* The three groups stop being blocks so their items share one row. */
+  .rail-group { display: contents; }
+  .rail-label { display: none; }
+  .rail-item, .rail-home { padding: 6px 0.7rem; font-size: 13px; }
+  .rail-archive { padding-top: 0; gap: 4px; }
+  .rail-chip { flex: 0 0 auto; padding: 5px 11px; }
+  .rail-foot { margin-top: 0; padding-top: 0.6rem; }
+  :root.can-jump .rail-jump { max-width: 22rem; height: 32px; }
+  .jump-panel { top: 60px; }
 }
 
 h2 { font-size: 1.15rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; margin: 2.6rem 0 0.3rem; }

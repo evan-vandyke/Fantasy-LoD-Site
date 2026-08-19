@@ -1651,6 +1651,138 @@
   --on-pill: #0c0f16;
 }
 
+:root {
+  --team-nickname: "Commanders";
+}
+
+:root[data-team="commanders"] {
+  --team-nickname: "Commanders";
+}
+
+:root[data-team="cowboys"] {
+  --team-nickname: "Cowboys";
+}
+
+:root[data-team="eagles"] {
+  --team-nickname: "Eagles";
+}
+
+:root[data-team="giants"] {
+  --team-nickname: "Giants";
+}
+
+:root[data-team="ravens"] {
+  --team-nickname: "Ravens";
+}
+
+:root[data-team="steelers"] {
+  --team-nickname: "Steelers";
+}
+
+:root[data-team="bengals"] {
+  --team-nickname: "Bengals";
+}
+
+:root[data-team="browns"] {
+  --team-nickname: "Browns";
+}
+
+:root[data-team="chiefs"] {
+  --team-nickname: "Chiefs";
+}
+
+:root[data-team="chargers"] {
+  --team-nickname: "Chargers";
+}
+
+:root[data-team="broncos"] {
+  --team-nickname: "Broncos";
+}
+
+:root[data-team="raiders"] {
+  --team-nickname: "Raiders";
+}
+
+:root[data-team="bills"] {
+  --team-nickname: "Bills";
+}
+
+:root[data-team="dolphins"] {
+  --team-nickname: "Dolphins";
+}
+
+:root[data-team="patriots"] {
+  --team-nickname: "Patriots";
+}
+
+:root[data-team="jets"] {
+  --team-nickname: "Jets";
+}
+
+:root[data-team="texans"] {
+  --team-nickname: "Texans";
+}
+
+:root[data-team="colts"] {
+  --team-nickname: "Colts";
+}
+
+:root[data-team="jaguars"] {
+  --team-nickname: "Jaguars";
+}
+
+:root[data-team="titans"] {
+  --team-nickname: "Titans";
+}
+
+:root[data-team="bears"] {
+  --team-nickname: "Bears";
+}
+
+:root[data-team="lions"] {
+  --team-nickname: "Lions";
+}
+
+:root[data-team="packers"] {
+  --team-nickname: "Packers";
+}
+
+:root[data-team="vikings"] {
+  --team-nickname: "Vikings";
+}
+
+:root[data-team="falcons"] {
+  --team-nickname: "Falcons";
+}
+
+:root[data-team="panthers"] {
+  --team-nickname: "Panthers";
+}
+
+:root[data-team="saints"] {
+  --team-nickname: "Saints";
+}
+
+:root[data-team="buccaneers"] {
+  --team-nickname: "Buccaneers";
+}
+
+:root[data-team="cardinals"] {
+  --team-nickname: "Cardinals";
+}
+
+:root[data-team="rams"] {
+  --team-nickname: "Rams";
+}
+
+:root[data-team="49ers"] {
+  --team-nickname: "49ers";
+}
+
+:root[data-team="seahawks"] {
+  --team-nickname: "Seahawks";
+}
+
 :root:not([data-team]) [data-set-team=""],
 :root[data-team="commanders"] [data-set-team="commanders"],
 :root[data-team="cowboys"] [data-set-team="cowboys"],
