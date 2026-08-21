@@ -672,3 +672,117 @@ ul.plain li { margin-bottom: 0.3rem; }
      no bin to wait for, so it is simply there. */
   .suggest-done-real { opacity: 1; transform: none; transition: none; }
 }
+
+/* ------------------------------------------------------- the week in flight
+
+   The front page in season. Everything here is about a week that has not finished, so
+   the register is a scoreboard rather than a record: big scores, the leader picked out,
+   and the projection kept quiet beside it. */
+
+.week-head {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 1rem; flex-wrap: wrap;
+}
+.week-head h2 { display: flex; align-items: center; gap: 0.55rem; }
+.week-pill {
+  font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 800;
+  padding: 0.16rem 0.46rem; border-radius: 999px;
+  background: var(--accent); color: var(--on-accent, #fff);
+}
+.week-stamp {
+  color: var(--muted); font-size: 0.78rem; margin: 0.4rem 0 1rem;
+  font-variant-numeric: tabular-nums;
+}
+.week-stamp time { font-weight: 700; color: var(--text); }
+
+.week-games {
+  display: grid; gap: 0.8rem; margin-bottom: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+}
+
+/* A card is a `<details>`, so the lineups open with no script at all. The marker is
+   removed on both spellings — Safari still wants the WebKit pseudo-element. */
+.week-game > summary { padding: 0.95rem 1.1rem; cursor: pointer; list-style: none; }
+.week-game > summary::-webkit-details-marker { display: none; }
+.week-game > summary::marker { content: ""; }
+.week-game > summary:hover { background: var(--surface-2); }
+
+.week-side {
+  display: grid; align-items: baseline; gap: 0.5rem;
+  grid-template-columns: auto 1fr auto auto; padding: 0.2rem 0;
+}
+.week-side .week-name { font-weight: 700; }
+.week-side .week-score {
+  font-size: 1.3rem; font-weight: 800; font-variant-numeric: tabular-nums;
+  font-family: var(--mono); letter-spacing: -0.02em;
+}
+.week-side .week-proj {
+  color: var(--muted); font-size: 0.68rem; font-family: var(--mono);
+  min-width: 5.2rem; text-align: right;
+}
+/* Whoever is ahead right now. Deliberately not called "winning". */
+.week-side.ahead .week-name, .week-side.ahead .week-score { color: var(--accent); }
+
+.week-margin {
+  color: var(--muted); font-size: 0.74rem; margin: 0.5rem 0 0;
+  padding-top: 0.5rem; border-top: 1px solid var(--border);
+}
+.week-game[open] > summary { border-bottom: 1px solid var(--border); }
+
+/* The card is the container, not the viewport. Two rosters side by side need about
+   30rem between them, and whether a card has that depends on how many columns the grid
+   above chose — which a viewport media query cannot see. At 800px wide the page shows
+   two cards of ~380px each, and stacking is the only thing that fits. */
+.week-game { container-type: inline-size; }
+.week-sparks, .week-rosters {
+  display: grid; grid-template-columns: 1fr; gap: 0.4rem 1.4rem;
+}
+.week-sparks { padding: 0.8rem 1.1rem 0; }
+.week-rosters { padding: 0.6rem 1.1rem 1rem; }
+/* 36rem, not 30: the "to play" and "on now" flags the NFL schedule added take real width
+   in the player column, and two rosters side by side clipped at the old breakpoint. */
+@container (min-width: 36rem) {
+  .week-sparks, .week-rosters { grid-template-columns: 1fr 1fr; }
+}
+.week-roster h4 {
+  font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.09em;
+  color: var(--muted); margin: 0.5rem 0 0.1rem;
+}
+.week-roster table { font-size: 0.76rem; }
+.week-roster th, .week-roster td { padding: 0.2rem 0.3rem; }
+.week-roster thead th {
+  position: static; background: none; font-size: 0.56rem; padding-bottom: 0.3rem;
+}
+.week-roster td.slot {
+  color: var(--muted); font-family: var(--mono); font-size: 0.66rem;
+  width: 3.6rem; white-space: normal;
+}
+.week-roster td.name { font-weight: 600; white-space: normal; }
+/* A bench player did not count towards the score, and the row should not read as if he
+   did. Kept on the page because a 30-point bench is the whole story of some weeks. */
+.week-roster tr.bench td { opacity: 0.5; }
+.week-roster tbody tr:hover td { background: none; }
+.week-roster tbody tr:nth-child(even) td { background: none; }
+
+/* The playoff line in the live table: the last team that would qualify if the week
+   ended now, ruled off from everyone who would not. */
+tr.cutline td { border-bottom: 2px solid var(--accent); }
+.up { color: var(--good); font-weight: 700; }
+.down { color: var(--bad); font-weight: 700; }
+
+
+
+/* What the NFL schedule buys the page: a zero that explains itself. Without these, a
+   starter who has not kicked off and one who was simply benched read identically. */
+.week-pill.quiet { background: var(--border); color: var(--text); }
+.week-left { display: block; font-size: 0.62rem; opacity: 0.75; }
+.week-flag {
+  display: inline-block; margin-left: 0.35rem; font-size: 0.55rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
+  border: 1px solid var(--border); border-radius: 999px; padding: 0.02rem 0.3rem;
+  vertical-align: 1px;
+}
+.week-flag.on { color: var(--accent); border-color: var(--accent); }
+/* Dimmed like a bench row, because it has contributed the same nothing so far — but it
+   still counts towards the projection, which is why it keeps its Proj column bright. */
+.week-roster tr.waiting td.slot, .week-roster tr.waiting td.name { opacity: 0.65; }
