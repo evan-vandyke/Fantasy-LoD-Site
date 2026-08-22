@@ -405,6 +405,150 @@ tr.departed td.name { font-weight: 600; }
 .profile-head h2 { margin: 0; }
 .profile-rule { height: 4px; border-radius: 2px; background: var(--accent); margin: 0.5rem 0 0.2rem; }
 
+/* ----------------------------------------------------------------- countdown
+
+   The one block on the site that is about the future. Everything else is rendered once
+   and stays true; this is wrong a second after the build finishes, which is why the
+   digits are the only part `countdown.js` owns and everything around them is server
+   markup. Take the script away and the card is a small calendar entry — the date, the
+   time, and what happens at it — which is worth reading and cannot go stale.
+
+   It is the loudest thing on the page on purpose. A draft date is the one piece of
+   information on this site that costs somebody something if they miss it, so the clock
+   is sized like a scoreboard rather than like a stat card, and the card the league is
+   actually waiting on wears the accent while the ones behind it do not.
+
+   The bottom margin does the job the next heading's top margin normally would: whatever
+   follows is still the first `h2` in the page body and still collapses its own to zero. */
+
+.countdown { margin: 0 0 2.6rem; }
+.countdown-grid {
+  display: grid; gap: 0.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(21rem, 1fr));
+}
+
+.countdown-card {
+  display: flex; flex-direction: column; position: relative; overflow: hidden;
+  padding: 1.15rem 1.25rem 1.2rem;
+}
+/* A card that has been retired mid-read. `display: flex` would otherwise win against
+   the attribute, and the whole section carries the same rule for the same reason. */
+.countdown[hidden], .countdown-card[hidden] { display: none; }
+
+/* -- next up
+
+   The soonest event, flagged by the build and re-flagged by the script when the one in
+   front of it retires. The accent edge is what makes the pair readable at a glance: two
+   identical cards say "two dates", one lit and one not says "this one, then that one". */
+
+.countdown-card.is-next { border-color: var(--accent); }
+.countdown-card.is-next::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; background: var(--accent);
+}
+
+.countdown-when {
+  display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;
+  margin: 0; color: var(--muted);
+  font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700;
+}
+.countdown-rank {
+  padding: 0.2rem 0.5rem; border-radius: 999px;
+  background: var(--surface-2); color: var(--muted);
+  font-size: 0.6rem; letter-spacing: 0.12em;
+}
+.is-next .countdown-rank { background: var(--accent); color: var(--on-accent, #fff); }
+
+/* An `h3` so the card has a heading, but not the muted all-caps `h3` of a section
+   label — this is the name of the thing being waited for. */
+.countdown-title {
+  margin: 0.4rem 0 0; color: var(--text);
+  font-size: 1.25rem; font-weight: 800; letter-spacing: -0.025em; text-transform: none;
+  line-height: 1.2;
+}
+
+/* -- the clock
+
+   Hidden until `countdown.js` puts real numbers in it. Zero-padded and tabular, so a
+   row of digits this size does not shift a pixel every time one rolls over — at 3rem an
+   unpadded hour jumping from 9 to 10 moves the whole line. */
+
+.countdown-clock { display: none; align-items: flex-start; gap: 0.15rem; margin: 1rem 0 0; }
+.countdown-clock.is-live { display: flex; }
+
+.countdown-unit { display: flex; flex-direction: column; align-items: center; flex: 1 1 0; min-width: 0; }
+.countdown-num {
+  font-size: clamp(2.1rem, 7.5vw, 3rem); font-weight: 800; line-height: 1;
+  letter-spacing: -0.045em; font-variant-numeric: tabular-nums; font-style: normal;
+  color: var(--muted);
+}
+.is-next .countdown-num { color: var(--text); }
+.countdown-tag {
+  margin-top: 0.3rem; color: var(--muted); font-style: normal;
+  font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 700;
+}
+/* The colons sit on the digits' baseline, not the unit's, so they line up with the
+   numerals rather than floating between them and the labels. */
+.countdown-sep {
+  font-size: clamp(1.5rem, 5vw, 2.1rem); font-weight: 800; line-height: 1.15;
+  color: var(--border);
+}
+.is-next .countdown-sep { color: var(--accent); }
+
+/* -- the last day
+
+   Inside twenty-four hours the days cell reads 0 and the card stops being an
+   announcement and starts being a warning. The seconds tick visibly and the colons
+   blink, which is the difference between a number that is counting and a number that
+   is printed. */
+
+.countdown-card.is-soon .countdown-num { color: var(--accent); }
+/* Accent as well as blinking. A `--border`-coloured colon dropped to a quarter opacity
+   is not a blink, it is a gap — the clock has to look like one clock. */
+.countdown-card.is-soon .countdown-sep {
+  color: var(--accent); animation: countdown-blink 1s steps(1, end) infinite;
+}
+.countdown-card.is-soon .countdown-num[data-unit="seconds"] { animation: countdown-tick 1s ease-out infinite; }
+
+@keyframes countdown-blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0.25; } }
+@keyframes countdown-tick { 0% { transform: scale(1.12); } 30%, 100% { transform: scale(1); } }
+
+/* -- happening now
+
+   What replaces the clock once the moment arrives, and what the card reads for as long
+   as `runs_for` says the thing lasts. Filled accent rather than accent-on-tint:
+   `--on-accent` is computed per team for contrast, so this stays readable under all 32. */
+
+.countdown-now {
+  display: none; align-items: center; gap: 0.55rem;
+  margin: 1rem 0 0; padding: 0.7rem 0.9rem; border-radius: 10px;
+  background: var(--accent); color: var(--on-accent, #fff);
+  font-size: 0.9rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;
+}
+.countdown-now.is-live { display: flex; }
+.countdown-pulse {
+  width: 9px; height: 9px; border-radius: 50%; flex: none; background: currentColor;
+  animation: countdown-pulse 1.4s ease-in-out infinite;
+}
+@keyframes countdown-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.72); } }
+
+.countdown-yours { margin: 0.6rem 0 0; color: var(--muted); font-size: 0.76rem; }
+
+.countdown-notes {
+  margin: 1rem 0 0; padding: 0.9rem 0 0 1.05rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted); font-size: 0.82rem;
+}
+.countdown-notes li { margin-bottom: 0.4rem; }
+.countdown-notes li:last-child { margin-bottom: 0; }
+
+/* Blinking and ticking are drama, and drama is exactly what somebody with this setting
+   on has asked not to be shown. The numbers still count; they just stop performing. */
+@media (prefers-reduced-motion: reduce) {
+  .countdown-card.is-soon .countdown-sep,
+  .countdown-card.is-soon .countdown-num[data-unit="seconds"],
+  .countdown-pulse { animation: none; }
+}
+
 /* ------------------------------------------------- awards, titles, plaques */
 
 /* One card per trophy: the thing won, who won it, and the sentence that says why.
