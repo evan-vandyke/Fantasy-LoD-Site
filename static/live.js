@@ -194,6 +194,40 @@
           summary.left_to_play + " still to come."
       );
     }
+
+    applyJackpot(summary.high, name);
+  }
+
+  // The jackpot card, which is the same high score as above measured against a bar. The
+  // bar is in the markup because no week settles on a Sunday: the season's highest
+  // finished week is the same number all afternoon, so the build can state it once and
+  // this only has to compare. `clear` is Python's answer to whether the top of the board
+  // is a score at all — an empty board has a leader by tie-break, and naming them as
+  // taking the pot names the wrong manager on a number nobody scored.
+  //
+  // A file written before `clear` existed leaves it undefined, which hides the card. That
+  // is why the field did not need a format bump: the two jobs deploy minutes apart, and
+  // the direction an unrecognised file falls in is "say nothing about the money".
+  function applyJackpot(high, name) {
+    var card = document.querySelector(".week-jackpot");
+    if (!card) { return; }
+
+    var bar = parseFloat(card.getAttribute("data-jackpot-bar"));
+    if (isNaN(bar)) { bar = 0; }
+    if (!name || !high.clear || high.score <= bar) {
+      card.hidden = true;
+      return;
+    }
+
+    var beatsName = card.getAttribute("data-jackpot-bar-name");
+    var beatsWeek = card.getAttribute("data-jackpot-bar-week");
+    var note = bar > 0 && beatsName
+      ? " · past " + beatsName + "’s " + pts(bar) + " in week " + beatsWeek
+      : " · the season’s highest so far";
+
+    set(card, "jackpot.name", name);
+    set(card, "jackpot.note", pts(high.score) + note);
+    card.hidden = false;
   }
 
   function nameFor(cards, teamKey) {

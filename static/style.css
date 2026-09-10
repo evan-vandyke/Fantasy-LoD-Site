@@ -435,6 +435,11 @@ tr.departed td.name { font-weight: 600; }
    the attribute, and the whole section carries the same rule for the same reason. */
 .countdown[hidden], .countdown-card[hidden] { display: none; }
 
+/* The jackpot card, which `live.js` puts up and takes down as scores move. `.card` sets
+   no display of its own, so the attribute already wins — this is here so a later rule
+   that does set one cannot quietly strand a claim about money on the page. */
+.week-jackpot[hidden] { display: none; }
+
 /* -- next up
 
    The soonest event, flagged by the build and re-flagged by the script when the one in
