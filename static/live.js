@@ -182,10 +182,12 @@
       var leader = closest.leader === null
         ? nameFor(cards, closest.home) + " and " + nameFor(cards, closest.away) + " level"
         : nameFor(cards, closest.leader === "home" ? closest.home : closest.away) + " ahead";
-      set(doc, "closest.note", "projected · " + leader);
+      // "Projected" is a hedge about starters still to come. With none left the two
+      // margins are the same number and the word is just wrong.
+      set(doc, "closest.note", (summary.settled ? "" : "projected · ") + leader);
     }
 
-    if (summary.left_to_play !== undefined) {
+    if (summary.left_to_play !== undefined && !summary.settled) {
       var on = summary.in_play;
       set(
         doc,
@@ -195,7 +197,35 @@
       );
     }
 
+    applySettled(summary.settled);
     applyJackpot(summary.high, name);
+  }
+
+  // The page's own framing, which the build can get wrong through no fault of its own.
+  //
+  // `state` is decided from `pro_games.stats_official`, and that column is only ever as
+  // current as the last backfill — which waits for ESPN to roll the scoring period, on
+  // the Wednesday. So the whole of a Tuesday is a week the site knows is over and cannot
+  // say so: week 1 of 2026 published all sixteen games as unofficial for two days after
+  // the last whistle. `live.json` carries ESPN's own answer from minutes ago, and this is
+  // the page taking it.
+  //
+  // It only ever promotes. A file older than the build can say a game is still on when
+  // the build knows better, and "Live" is not a claim worth restoring from stale data.
+  // A file written before `settled` existed leaves it undefined and changes nothing.
+  function applySettled(settled) {
+    if (!settled) { return; }
+
+    var playing = document.querySelector('[data-live="playing"]');
+    if (playing) { playing.hidden = true; }
+    var done = document.querySelector('[data-live="settled"]');
+    if (done) { done.hidden = false; }
+
+    var pill = document.querySelector('[data-live="pill"]');
+    if (pill) {
+      pill.textContent = "All in";
+      pill.classList.add("quiet");
+    }
   }
 
   // The jackpot card, which is the same high score as above measured against a bar. The
