@@ -83,12 +83,29 @@
     return value === null || value === undefined ? "–" : Number(value).toFixed(2);
   }
 
+  // Who is still to play, per side and named. `week.html.j2` renders this same sentence at
+  // build time and this replaces that node on the first refresh, so the two must agree
+  // word for word or the card visibly rewrites itself twenty seconds after it loads.
+  //
+  // It used to say "14 starters to come", which was the two sides' counts *added
+  // together* — a third number on a card already showing both, belonging to neither, in a
+  // sentence naming no team. Issue #40: a reader saw it beside "8 left" and "6 left" and
+  // reasonably concluded it was counting the bench. It was not. It was 8 + 6.
+  function stillToPlay(homeLeft, awayLeft, homeName, awayName) {
+    var home = homeLeft || 0;
+    var away = awayLeft || 0;
+    if (!(home + away)) { return " · everyone has played"; }
+    return " · " + home + " left for " + homeName + ", " + away + " for " + awayName;
+  }
+
   // A seam for the test suite, and nothing else. Node has no `document`, so everything
   // below this line would throw there — the helpers above it are the ones with rules in
   // them worth checking against Python, and `test_livefeed.py` runs them through node to
   // prove `pts` formats exactly as the `pts` Jinja filter does.
   if (typeof document === "undefined") {
-    if (typeof module !== "undefined") { module.exports = { pts: pts, phrase: phrase }; }
+    if (typeof module !== "undefined") {
+      module.exports = { pts: pts, phrase: phrase, stillToPlay: stillToPlay };
+    }
     return;
   }
 
@@ -124,10 +141,7 @@
       if (node) { node.classList.toggle("ahead", matchup.leader === which); }
     });
 
-    var left = (matchup.home.left || 0) + (matchup.away.left || 0);
-    var tail = left
-      ? " · " + left + " starter" + (left === 1 ? "" : "s") + " to come"
-      : " · everyone has played";
+    var tail = stillToPlay(matchup.home.left, matchup.away.left, names.home, names.away);
     var head = matchup.leader === null
       ? "level"
       : names[matchup.leader] + " by " + pts(matchup.margin);
