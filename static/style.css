@@ -847,6 +847,11 @@ ul.plain li { margin-bottom: 0.3rem; }
 .week-games {
   display: grid; gap: 0.8rem; margin-bottom: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  /* Each card keeps its own height. A grid stretches its items to the tallest in the row
+     by default, and these are `<details>` — so opening one lineup dragged its two
+     neighbours to the same height and left them as tall white voids with a scoreline
+     floating at the top. `start` lets a closed card stay closed-sized. */
+  align-items: start;
 }
 
 /* A card is a `<details>`, so the lineups open with no script at all. The marker is
