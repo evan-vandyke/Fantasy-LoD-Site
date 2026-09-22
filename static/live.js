@@ -98,13 +98,48 @@
     return " · " + home + " left for " + homeName + ", " + away + " for " + awayName;
   }
 
+  // Where a roster's rows belong once a slot has changed, as a permutation of the order
+  // the build drew them in.
+  //
+  // The ranks come from the file — `transform.slot_rank`, the same table the page was
+  // built from, because a flex slot sits after TE rather than at its numeric place and a
+  // copy of that table in here would be a second implementation with nothing to catch it
+  // drifting.
+  //
+  // What is decided here is the tie-break, and it is deliberately *not* the one the SQL
+  // uses. `metrics.live.lineup` orders by rank, then points descending — fine once, at
+  // build time. Re-applying it every twenty minutes would walk rows past each other all
+  // afternoon as scores moved, which is the complaint that query's ORDER BY was changed
+  // to fix in the first place. So the build's own order is the tie-break: a row moves
+  // when its slot moved, and at no other time.
+  function lineupOrder(ranks) {
+    var order = ranks.map(function (rank, index) {
+      return { rank: rank, index: index };
+    });
+    // Sorted on an explicit index rather than trusting the engine's sort to be stable.
+    // It is, since ES2019; this page is also the one thing in the repo a ten-year-old
+    // phone opens on a Sunday.
+    order.sort(function (a, b) {
+      return a.rank - b.rank || a.index - b.index;
+    });
+    return order.map(function (entry) {
+      return entry.index;
+    });
+  }
+
   // A seam for the test suite, and nothing else. Node has no `document`, so everything
   // below this line would throw there — the helpers above it are the ones with rules in
   // them worth checking against Python, and `test_livefeed.py` runs them through node to
-  // prove `pts` formats exactly as the `pts` Jinja filter does.
+  // prove `pts` formats exactly as the `pts` Jinja filter does, and that a lineup
+  // reorders into the order the database would have rendered.
   if (typeof document === "undefined") {
     if (typeof module !== "undefined") {
-      module.exports = { pts: pts, phrase: phrase, stillToPlay: stillToPlay };
+      module.exports = {
+        pts: pts,
+        phrase: phrase,
+        stillToPlay: stillToPlay,
+        lineupOrder: lineupOrder
+      };
     }
     return;
   }
@@ -148,6 +183,68 @@
     set(card, "margin", head + tail);
   }
 
+  // Who is actually in the lineup, which is the one thing on this page the build cannot
+  // keep current.
+  //
+  // `fantasy rosters` refetches the week in flight every couple of hours and commits when
+  // a slot changed — but a commit is not a publish, and the site is rebuilt twice a day.
+  // On 2026-09-21 a receiver swapped in at 23:51Z was still drawn as a bench player the
+  // next morning. Worse, the card's own total already counted him: `livefeed` reads the
+  // fresh slot to pick a side's starters, so the headline and the rows under it were
+  // describing two different lineups.
+  //
+  // So the rows move. Only when the file describes the whole table, though — see
+  // `slotsFor`. A label rewritten without the row moving with it is the confusing state,
+  // not the fix: correct slots scattered through the wrong groups.
+  function applySlots(trs, rows) {
+    for (var i = 0; i < rows.length; i++) {
+      var cell = trs[i].querySelector('[data-live="player.slot"]');
+      if (cell) { cell.textContent = rows[i].slot; }
+      trs[i].classList.toggle("bench", !rows[i].starter);
+      trs[i].classList.toggle("starter", !!rows[i].starter);
+    }
+
+    var body = trs[0].parentNode;
+    if (!body) { return; }
+    var order = lineupOrder(
+      rows.map(function (row) {
+        return row.rank;
+      })
+    );
+    // `appendChild` on a node already in the list moves it, so walking the permutation
+    // in order leaves the rows in it. No node is added and none is removed.
+    for (var m = 0; m < order.length; m++) { body.appendChild(trs[order[m]]); }
+  }
+
+  // The feed's row for every player in this table, or null.
+  //
+  // Null is the honest answer for a roster the file cannot fully describe — a player
+  // added since the build has no row here, and the browser cannot draw him one: it has
+  // no name and no projection, and inventing either is worse than being a build behind.
+  // In that case the table keeps the slots and the order the build gave it, which is
+  // stale but coherent, and the points still refresh.
+  function slotsFor(trs, byId, teamKey) {
+    var rows = [];
+    for (var i = 0; i < trs.length; i++) {
+      var row = byId[teamKey + "/" + trs[i].getAttribute("data-player")];
+      // A file written before slots shipped carries none of the three fields, and leaves
+      // the table exactly as it is. That is why adding them needed no format bump. All
+      // three are checked rather than one taken as proof of the others: `starter` alone
+      // going missing would style a whole roster as benched, which looks like a claim
+      // rather than like a missing field.
+      if (
+        !row ||
+        row.slot === undefined ||
+        row.rank === undefined ||
+        row.starter === undefined
+      ) {
+        return null;
+      }
+      rows.push(row);
+    }
+    return rows.length ? rows : null;
+  }
+
   function applyPlayers(rows) {
     // One pass over the rows rather than a query per player: twelve rosters is about two
     // hundred nodes, and two hundred selector calls on a phone is a visible pause.
@@ -161,7 +258,7 @@
       var keys = [cards[c].getAttribute("data-home"), cards[c].getAttribute("data-away")];
       var tables = cards[c].querySelectorAll(".week-roster");
       for (var t = 0; t < tables.length && t < keys.length; t++) {
-        var trs = tables[t].querySelectorAll("tr[data-player]");
+        var trs = [].slice.call(tables[t].querySelectorAll("tr[data-player]"));
         for (var r = 0; r < trs.length; r++) {
           var row = byId[keys[t] + "/" + trs[r].getAttribute("data-player")];
           if (!row) { continue; }
@@ -178,6 +275,10 @@
           if (mark) { mark.innerHTML = parts[0]; }
           trs[r].classList.toggle("waiting", waiting);
         }
+
+        // Last, because it moves the nodes the loop above just wrote into.
+        var lineup = slotsFor(trs, byId, keys[t]);
+        if (lineup) { applySlots(trs, lineup); }
       }
     }
   }
