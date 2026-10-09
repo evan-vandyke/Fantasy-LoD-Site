@@ -213,14 +213,17 @@
 
 <main class="wrap">
 <div class="week-head" data-live-year="2026" data-live-week="5"
-     data-live-state="preview">
+     data-live-state="live">
   <div>
     <h2>
-      Week 5    </h2>
+      Week 5      <span class="week-pill"
+            data-live="pill">Live</span>
+    </h2>
     <p class="sub"><span data-live="playing">
         2026 &middot;
         <span data-live="progress">
-          not kicked off. These are the fixtures.
+          9 starters on the field,
+          96 still to come.
         </span>
         Nothing here is a result yet.
       </span>
@@ -232,18 +235,430 @@
     </p>
   </div><p class="week-stamp">
     Scores as of
-    <time datetime="2026-10-08T17:44:49+00:00" data-relative>Thu 8 Oct, 1:44pm EDT</time>
+    <time datetime="2026-10-09T02:47:05+00:00" data-relative>Thu 8 Oct, 10:47pm EDT</time>
   </p>
 </div>
 
+<div class="grid">
+  <div class="card stat">
+    <div class="label">Highest so far</div>
+    <div class="value" data-live="high.score">0.00</div>
+    <div class="note" data-live="high.name">Adam</div>
+  </div>
+  <div class="card stat">
+    <div class="label">Closest game</div>
+    <div class="value" data-live="closest.margin">7.23</div>
+    <div class="note" data-live="closest.note">
+        projected &middot;
+        Greg and Evan level
+    </div>
+  </div>
+<div class="card stat week-jackpot"
+       data-jackpot-bar="177.92"
+       data-jackpot-bar-name="Beale"
+       data-jackpot-bar-week="2" hidden>
+    <div class="label">Jackpot &mdash; if it holds</div>
+    <div class="value" data-live="jackpot.name"></div>
+    <div class="note" data-live="jackpot.note">
+    </div>
+  </div>
+</div>
 
 <h2>The games</h2>
 <p class="sub">
-    Closest first. Projected is ESPN&rsquo;s figure for the whole week.
+    Closest projected finish first &mdash; a lead with nobody left to play is worth more
+    than a bigger one against four unplayed starters. The projection is what is on the
+    board plus what the starters who have not kicked off are projected for; a player
+    already on the field counts only for the points he has.
   Open a game for both lineups.
 </p>
 
 <div class="week-games">
+  <details class="card week-game" data-home="espn:2117889138:2026:8" data-away="espn:2117889138:2026:4"
+           data-home-name="Greg" data-away-name="Evan">
+    <summary>
+      <div class="week-side" data-side="home">
+        <span class="swatch" style="background: var(--mgr-greg, var(--accent))"></span>
+        <span class="week-name">Greg</span>
+        <span class="week-score" data-live="home.score">0.00</span>
+        <span class="week-proj">
+          &rarr; <span data-live="home.finish">102.58</span>
+          <span class="week-left"><span data-live="home.left">7</span> left</span>
+        </span>
+      </div>
+      <div class="week-side" data-side="away">
+        <span class="swatch" style="background: var(--mgr-evan, var(--accent))"></span>
+        <span class="week-name">Evan</span>
+        <span class="week-score" data-live="away.score">0.00</span>
+        <span class="week-proj">
+          &rarr; <span data-live="away.finish">109.81</span>
+          <span class="week-left"><span data-live="away.left">8</span> left</span>
+        </span>
+      </div>
+      <p class="week-margin" data-live="margin">
+          level
+            &middot; 7 left for Greg, 8 for Evan
+      </p>
+    </summary>
+
+    <div class="week-sparks">
+      <div><svg class="spark" viewBox="0 0 180 32" width="180" height="32" role="img" aria-label="Weekly scores"><polyline points="0.0,28.0 22.5,25.4 45.0,21.3 67.5,16.6 90.0,14.1 112.5,13.4 135.0,9.0 157.5,4.4 180.0,4.0" fill="none" stroke="var(--mgr-greg, var(--accent))" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="180.0" cy="4.0" r="2.8" fill="var(--mgr-greg, var(--accent))"/><circle cx="0.0" cy="28.0" r="2.8" fill="var(--mgr-greg, var(--accent))"/></svg></div>
+      <div><svg class="spark" viewBox="0 0 180 32" width="180" height="32" role="img" aria-label="Weekly scores"><polyline points="0.0,28.0 22.5,28.0 45.0,28.0 67.5,19.3 90.0,19.3 112.5,19.3 135.0,19.3 157.5,19.3 180.0,4.0" fill="none" stroke="var(--mgr-evan, var(--accent))" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="180.0" cy="4.0" r="2.8" fill="var(--mgr-evan, var(--accent))"/><circle cx="0.0" cy="28.0" r="2.8" fill="var(--mgr-evan, var(--accent))"/></svg></div>
+    </div>
+
+    <div class="week-rosters">
+      <div class="week-roster">
+        <h4>Greg</h4>
+        <table>
+          <thead>
+            <tr><th></th><th>Player</th><th class="num">Pts</th><th class="num">Proj</th></tr>
+          </thead>
+          <tbody>
+            <tr class="starter waiting" data-player="espn:4431452">
+              <td class="slot" data-live="player.slot">QB</td>
+              <td class="name">
+                Drake Maye<span data-live="player.flag">
+<span class="week-flag">to play</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num dim">21.73</td>
+            </tr>
+            <tr class="starter waiting" data-player="espn:3043078">
+              <td class="slot" data-live="player.slot">RB</td>
+              <td class="name">
+                Derrick Henry<span data-live="player.flag">
+<span class="week-flag">to play</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num dim">16.77</td>
+            </tr>
+            <tr class="starter" data-player="espn:4361579">
+              <td class="slot" data-live="player.slot">RB</td>
+              <td class="name">
+                Javonte Williams<span data-live="player.flag">
+<span class="week-flag on">on now</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points">0.00</td>
+              <td class="num dim">17.50</td>
+            </tr>
+            <tr class="starter waiting" data-player="espn:4360761">
+              <td class="slot" data-live="player.slot">WR</td>
+              <td class="name">
+                Michael Wilson<span data-live="player.flag">
+<span class="week-flag">to play</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num dim">16.78</td>
+            </tr>
+            <tr class="starter waiting" data-player="espn:4362628">
+              <td class="slot" data-live="player.slot">WR</td>
+              <td class="name">
+                Ja&#39;Marr Chase<span data-live="player.flag">
+<span class="week-flag">to play</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num dim">21.85</td>
+            </tr>
+            <tr class="starter waiting" data-player="espn:3040151">
+              <td class="slot" data-live="player.slot">TE</td>
+              <td class="name">
+                George Kittle<span data-live="player.flag">
+<span class="week-flag">to play</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num dim">13.67</td>
+            </tr>
+            <tr class="starter" data-player="espn:4596448">
+              <td class="slot" data-live="player.slot">RB/WR/TE</td>
+              <td class="name">
+                Bucky Irving<span data-live="player.flag">
+<span class="week-flag on">on now</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points">0.00</td>
+              <td class="num dim">15.22</td>
+            </tr>
+            <tr class="starter waiting" data-player="espn:-16033">
+              <td class="slot" data-live="player.slot">D/ST</td>
+              <td class="name">
+                Ravens D/ST<span data-live="player.flag">
+<span class="week-flag">to play</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num dim">2.67</td>
+            </tr>
+            <tr class="starter waiting" data-player="espn:4689936">
+              <td class="slot" data-live="player.slot">K</td>
+              <td class="name">
+                Jake Bates<span data-live="player.flag">
+<span class="week-flag">to play</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num dim">9.12</td>
+            </tr>
+            <tr class="bench" data-player="espn:3116165">
+              <td class="slot" data-live="player.slot">BE</td>
+              <td class="name">
+                Chris Godwin Jr.<span data-live="player.flag">
+<span class="week-flag on">on now</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points">0.00</td>
+              <td class="num dim">6.81</td>
+            </tr>
+            <tr class="bench" data-player="espn:3139477">
+              <td class="slot" data-live="player.slot">BE</td>
+              <td class="name">
+                Patrick Mahomes<span data-live="player.flag">
+<span class="week-flag">bye</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points">0.00</td>
+              <td class="num dim">0.00</td>
+            </tr>
+            <tr class="bench waiting" data-player="espn:4047650">
+              <td class="slot" data-live="player.slot">BE</td>
+              <td class="name">
+                DK Metcalf<span data-live="player.flag">
+<span class="week-flag">to play</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num dim">12.39</td>
+            </tr>
+            <tr class="bench waiting" data-player="espn:4241463">
+              <td class="slot" data-live="player.slot">BE</td>
+              <td class="name">
+                Jerry Jeudy<span data-live="player.flag">
+<span class="week-flag">to play</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num dim">4.66</td>
+            </tr>
+            <tr class="bench waiting" data-player="espn:4428557">
+              <td class="slot" data-live="player.slot">BE</td>
+              <td class="name">
+                Tyjae Spears<span data-live="player.flag">
+<span class="week-flag">to play</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num dim">6.45</td>
+            </tr>
+            <tr class="bench waiting" data-player="espn:4570037">
+              <td class="slot" data-live="player.slot">BE</td>
+              <td class="name">
+                Terrance Ferguson<span data-live="player.flag">
+<span class="week-flag">to play</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num dim">0.00</td>
+            </tr>
+            <tr class="bench waiting" data-player="espn:4697815">
+              <td class="slot" data-live="player.slot">BE</td>
+              <td class="name">
+                Rachaad White<span data-live="player.flag">
+<span class="week-flag">to play</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num dim">8.01</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="week-roster">
+        <h4>Evan</h4>
+        <table>
+          <thead>
+            <tr><th></th><th>Player</th><th class="num">Pts</th><th class="num">Proj</th></tr>
+          </thead>
+          <tbody>
+            <tr class="starter waiting" data-player="espn:4360689">
+              <td class="slot" data-live="player.slot">QB</td>
+              <td class="name">
+                Tyler Shough<span data-live="player.flag">
+<span class="week-flag">to play</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num dim">19.43</td>
+            </tr>
+            <tr class="starter waiting" data-player="espn:3916148">
+              <td class="slot" data-live="player.slot">RB</td>
+              <td class="name">
+                Tony Pollard<span data-live="player.flag">
+<span class="week-flag">to play</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num dim">13.00</td>
+            </tr>
+            <tr class="starter waiting" data-player="espn:4685382">
+              <td class="slot" data-live="player.slot">RB</td>
+              <td class="name">
+                Omarion Hampton<span data-live="player.flag">
+<span class="week-flag">to play</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num dim">11.56</td>
+            </tr>
+            <tr class="starter waiting" data-player="espn:4426515">
+              <td class="slot" data-live="player.slot">WR</td>
+              <td class="name">
+                Puka Nacua<span data-live="player.flag">
+<span class="week-flag">to play</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num dim">21.68</td>
+            </tr>
+            <tr class="starter waiting" data-player="espn:4569618">
+              <td class="slot" data-live="player.slot">WR</td>
+              <td class="name">
+                Garrett Wilson<span data-live="player.flag">
+<span class="week-flag">to play</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num dim">14.74</td>
+            </tr>
+            <tr class="starter" data-player="espn:4242355">
+              <td class="slot" data-live="player.slot">TE</td>
+              <td class="name">
+                Jake Ferguson<span data-live="player.flag">
+<span class="week-flag on">on now</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points">0.00</td>
+              <td class="num dim">6.87</td>
+            </tr>
+            <tr class="starter waiting" data-player="espn:4685247">
+              <td class="slot" data-live="player.slot">RB/WR/TE</td>
+              <td class="name">
+                Braelon Allen<span data-live="player.flag">
+<span class="week-flag">to play</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num dim">14.13</td>
+            </tr>
+            <tr class="starter waiting" data-player="espn:-16028">
+              <td class="slot" data-live="player.slot">D/ST</td>
+              <td class="name">
+                Commanders D/ST<span data-live="player.flag">
+<span class="week-flag">to play</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num dim">7.31</td>
+            </tr>
+            <tr class="starter waiting" data-player="espn:4697745">
+              <td class="slot" data-live="player.slot">K</td>
+              <td class="name">
+                Tyler Loop<span data-live="player.flag">
+<span class="week-flag">to play</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num dim">7.95</td>
+            </tr>
+            <tr class="bench waiting" data-player="espn:3121422">
+              <td class="slot" data-live="player.slot">BE</td>
+              <td class="name">
+                Terry McLaurin<span data-live="player.flag">
+<span class="week-flag">to play</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num dim">13.17</td>
+            </tr>
+            <tr class="bench waiting" data-player="espn:3917315">
+              <td class="slot" data-live="player.slot">BE</td>
+              <td class="name">
+                Kyler Murray<span data-live="player.flag">
+<span class="week-flag">to play</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num dim">20.73</td>
+            </tr>
+            <tr class="bench waiting" data-player="espn:4427366">
+              <td class="slot" data-live="player.slot">BE</td>
+              <td class="name">
+                Breece Hall<span data-live="player.flag">
+<span class="week-flag">to play</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num dim">0.00</td>
+            </tr>
+            <tr class="bench waiting" data-player="espn:4430539">
+              <td class="slot" data-live="player.slot">BE</td>
+              <td class="name">
+                Brenton Strange<span data-live="player.flag">
+<span class="week-flag">to play</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num dim">9.71</td>
+            </tr>
+            <tr class="bench" data-player="espn:4430834">
+              <td class="slot" data-live="player.slot">BE</td>
+              <td class="name">
+                Jalen McMillan<span data-live="player.flag">
+<span class="week-flag on">on now</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points">0.00</td>
+              <td class="num dim">0.00</td>
+            </tr>
+            <tr class="bench waiting" data-player="espn:4431299">
+              <td class="slot" data-live="player.slot">BE</td>
+              <td class="name">
+                Rome Odunze<span data-live="player.flag">
+<span class="week-flag">to play</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num dim">10.91</td>
+            </tr>
+            <tr class="bench" data-player="espn:4678008">
+              <td class="slot" data-live="player.slot">BE</td>
+              <td class="name">
+                Jonathon Brooks<span data-live="player.flag">
+<span class="week-flag">bye</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points">0.00</td>
+              <td class="num dim">0.00</td>
+            </tr>
+            <tr class="bench waiting" data-player="espn:4426385">
+              <td class="slot" data-live="player.slot">IR</td>
+              <td class="name">
+                Zach Charbonnet<span data-live="player.flag">
+<span class="week-flag">to play</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num dim">0.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </details>
   <details class="card week-game" data-home="espn:2117889138:2026:9" data-away="espn:2117889138:2026:10"
            data-home-name="Stew" data-away-name="Jon">
     <summary>
@@ -251,19 +666,30 @@
         <span class="swatch" style="background: var(--mgr-stew, var(--accent))"></span>
         <span class="week-name">Stew</span>
         <span class="week-score" data-live="home.score">0.00</span>
-        <span class="week-proj">proj 106.34</span>
+        <span class="week-proj">
+          &rarr; <span data-live="home.finish">106.34</span>
+          <span class="week-left"><span data-live="home.left">9</span> left</span>
+        </span>
       </div>
       <div class="week-side" data-side="away">
         <span class="swatch" style="background: var(--mgr-jon, var(--accent))"></span>
         <span class="week-name">Jon</span>
         <span class="week-score" data-live="away.score">0.00</span>
-        <span class="week-proj">proj 106.85</span>
+        <span class="week-proj">
+          &rarr; <span data-live="away.finish">96.66</span>
+          <span class="week-left"><span data-live="away.left">8</span> left</span>
+        </span>
       </div>
       <p class="week-margin" data-live="margin">
-          not started
+          level
+            &middot; 9 left for Stew, 8 for Jon
       </p>
     </summary>
 
+    <div class="week-sparks">
+      <div><svg class="spark" viewBox="0 0 180 32" width="180" height="32" role="img" aria-label="Weekly scores"><polyline points="0.0,28.0 22.5,28.0 45.0,28.0 67.5,28.0 90.0,28.0 112.5,28.0 135.0,28.0 157.5,28.0 180.0,28.0" fill="none" stroke="var(--mgr-stew, var(--accent))" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="0.0" cy="28.0" r="2.8" fill="var(--mgr-stew, var(--accent))"/><circle cx="0.0" cy="28.0" r="2.8" fill="var(--mgr-stew, var(--accent))"/></svg></div>
+      <div><svg class="spark" viewBox="0 0 180 32" width="180" height="32" role="img" aria-label="Weekly scores"><polyline points="0.0,28.0 22.5,28.0 45.0,23.2 67.5,23.2 90.0,23.2 112.5,4.0 135.0,4.0 157.5,4.0 180.0,4.0" fill="none" stroke="var(--mgr-jon, var(--accent))" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="112.5" cy="4.0" r="2.8" fill="var(--mgr-jon, var(--accent))"/><circle cx="0.0" cy="28.0" r="2.8" fill="var(--mgr-jon, var(--accent))"/></svg></div>
+    </div>
 
     <div class="week-rosters">
       <div class="week-roster">
@@ -503,15 +929,15 @@
               <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
               <td class="num dim">11.97</td>
             </tr>
-            <tr class="starter waiting" data-player="espn:4385690">
+            <tr class="starter waiting" data-player="espn:4373678">
               <td class="slot" data-live="player.slot">RB/WR/TE</td>
               <td class="name">
-                Dalton Kincaid<span data-live="player.flag">
+                Khalil Shakir<span data-live="player.flag">
 <span class="week-flag">to play</span>
                 </span>
               </td>
               <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">8.84</td>
+              <td class="num dim">9.45</td>
             </tr>
             <tr class="starter waiting" data-player="espn:-16007">
               <td class="slot" data-live="player.slot">D/ST</td>
@@ -523,14 +949,14 @@
               <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
               <td class="num dim">6.17</td>
             </tr>
-            <tr class="starter waiting" data-player="espn:3953687">
+            <tr class="starter" data-player="espn:3953687">
               <td class="slot" data-live="player.slot">K</td>
               <td class="name">
                 Brandon Aubrey<span data-live="player.flag">
-<span class="week-flag">to play</span>
+<span class="week-flag on">on now</span>
                 </span>
               </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num" data-live="player.points">0.00</td>
               <td class="num dim">10.80</td>
             </tr>
             <tr class="bench waiting" data-player="espn:3068267">
@@ -573,15 +999,15 @@
               <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
               <td class="num dim">0.00</td>
             </tr>
-            <tr class="bench waiting" data-player="espn:4373678">
+            <tr class="bench waiting" data-player="espn:4385690">
               <td class="slot" data-live="player.slot">BE</td>
               <td class="name">
-                Khalil Shakir<span data-live="player.flag">
+                Dalton Kincaid<span data-live="player.flag">
 <span class="week-flag">to play</span>
                 </span>
               </td>
               <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">9.45</td>
+              <td class="num dim">8.84</td>
             </tr>
             <tr class="bench waiting" data-player="espn:4426348">
               <td class="slot" data-live="player.slot">BE</td>
@@ -592,6 +1018,16 @@
               </td>
               <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
               <td class="num dim">23.75</td>
+            </tr>
+            <tr class="bench waiting" data-player="espn:4596334">
+              <td class="slot" data-live="player.slot">BE</td>
+              <td class="name">
+                Keaton Mitchell<span data-live="player.flag">
+<span class="week-flag">to play</span>
+                </span>
+              </td>
+              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num dim">7.79</td>
             </tr>
             <tr class="bench waiting" data-player="espn:4361529">
               <td class="slot" data-live="player.slot">IR</td>
@@ -615,19 +1051,30 @@
         <span class="swatch" style="background: var(--mgr-andrew, var(--accent))"></span>
         <span class="week-name">Blunt</span>
         <span class="week-score" data-live="home.score">0.00</span>
-        <span class="week-proj">proj 110.45</span>
+        <span class="week-proj">
+          &rarr; <span data-live="home.finish">100.69</span>
+          <span class="week-left"><span data-live="home.left">7</span> left</span>
+        </span>
       </div>
       <div class="week-side" data-side="away">
         <span class="swatch" style="background: var(--mgr-larry, var(--accent))"></span>
         <span class="week-name">L.J.</span>
         <span class="week-score" data-live="away.score">0.00</span>
-        <span class="week-proj">proj 111.23</span>
+        <span class="week-proj">
+          &rarr; <span data-live="away.finish">111.23</span>
+          <span class="week-left"><span data-live="away.left">8</span> left</span>
+        </span>
       </div>
       <p class="week-margin" data-live="margin">
-          not started
+          level
+            &middot; 7 left for Blunt, 8 for L.J.
       </p>
     </summary>
 
+    <div class="week-sparks">
+      <div><svg class="spark" viewBox="0 0 180 32" width="180" height="32" role="img" aria-label="Weekly scores"><polyline points="0.0,28.0 22.5,28.0 45.0,24.1 67.5,19.8 90.0,19.8 112.5,19.8 135.0,8.6 157.5,4.0 180.0,4.0" fill="none" stroke="var(--mgr-andrew, var(--accent))" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="157.5" cy="4.0" r="2.8" fill="var(--mgr-andrew, var(--accent))"/><circle cx="0.0" cy="28.0" r="2.8" fill="var(--mgr-andrew, var(--accent))"/></svg></div>
+      <div><svg class="spark" viewBox="0 0 180 32" width="180" height="32" role="img" aria-label="Weekly scores"><polyline points="0.0,28.0 22.5,28.0 45.0,28.0 67.5,28.0 90.0,28.0 112.5,28.0 135.0,28.0 157.5,28.0 180.0,28.0" fill="none" stroke="var(--mgr-larry, var(--accent))" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="0.0" cy="28.0" r="2.8" fill="var(--mgr-larry, var(--accent))"/><circle cx="0.0" cy="28.0" r="2.8" fill="var(--mgr-larry, var(--accent))"/></svg></div>
+    </div>
 
     <div class="week-rosters">
       <div class="week-roster">
@@ -667,14 +1114,14 @@
               <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
               <td class="num dim">17.83</td>
             </tr>
-            <tr class="starter waiting" data-player="espn:4567750">
+            <tr class="starter" data-player="espn:4567750">
               <td class="slot" data-live="player.slot">WR</td>
               <td class="name">
                 Emeka Egbuka<span data-live="player.flag">
-<span class="week-flag">to play</span>
+<span class="week-flag on">on now</span>
                 </span>
               </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num" data-live="player.points">0.00</td>
               <td class="num dim">9.76</td>
             </tr>
             <tr class="starter waiting" data-player="espn:4685278">
@@ -999,19 +1446,30 @@
         <span class="swatch" style="background: var(--mgr-josh, var(--accent))"></span>
         <span class="week-name">Josh</span>
         <span class="week-score" data-live="home.score">0.00</span>
-        <span class="week-proj">proj 122.23</span>
+        <span class="week-proj">
+          &rarr; <span data-live="home.finish">122.17</span>
+          <span class="week-left"><span data-live="home.left">9</span> left</span>
+        </span>
       </div>
       <div class="week-side" data-side="away">
         <span class="swatch" style="background: var(--mgr-ben, var(--accent))"></span>
         <span class="week-name">Ben</span>
         <span class="week-score" data-live="away.score">0.00</span>
-        <span class="week-proj">proj 113.68</span>
+        <span class="week-proj">
+          &rarr; <span data-live="away.finish">94.64</span>
+          <span class="week-left"><span data-live="away.left">8</span> left</span>
+        </span>
       </div>
       <p class="week-margin" data-live="margin">
-          not started
+          level
+            &middot; 9 left for Josh, 8 for Ben
       </p>
     </summary>
 
+    <div class="week-sparks">
+      <div><svg class="spark" viewBox="0 0 180 32" width="180" height="32" role="img" aria-label="Weekly scores"><polyline points="0.0,28.0 22.5,28.0 45.0,28.0 67.5,28.0 90.0,28.0 112.5,28.0 135.0,28.0 157.5,28.0 180.0,28.0" fill="none" stroke="var(--mgr-josh, var(--accent))" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="0.0" cy="28.0" r="2.8" fill="var(--mgr-josh, var(--accent))"/><circle cx="0.0" cy="28.0" r="2.8" fill="var(--mgr-josh, var(--accent))"/></svg></div>
+      <div><svg class="spark" viewBox="0 0 180 32" width="180" height="32" role="img" aria-label="Weekly scores"><polyline points="0.0,28.0 22.5,28.0 45.0,28.0 67.5,28.0 90.0,28.0 112.5,16.4 135.0,16.4 157.5,4.0 180.0,4.0" fill="none" stroke="var(--mgr-ben, var(--accent))" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="157.5" cy="4.0" r="2.8" fill="var(--mgr-ben, var(--accent))"/><circle cx="0.0" cy="28.0" r="2.8" fill="var(--mgr-ben, var(--accent))"/></svg></div>
+    </div>
 
     <div class="week-rosters">
       <div class="week-roster">
@@ -1039,7 +1497,7 @@
                 </span>
               </td>
               <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">14.49</td>
+              <td class="num dim">14.42</td>
             </tr>
             <tr class="starter waiting" data-player="espn:4887558">
               <td class="slot" data-live="player.slot">RB</td>
@@ -1059,7 +1517,7 @@
                 </span>
               </td>
               <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">15.50</td>
+              <td class="num dim">15.51</td>
             </tr>
             <tr class="starter waiting" data-player="espn:4430878">
               <td class="slot" data-live="player.slot">WR</td>
@@ -1111,14 +1569,14 @@
               <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
               <td class="num dim">8.80</td>
             </tr>
-            <tr class="bench waiting" data-player="espn:-16027">
+            <tr class="bench" data-player="espn:-16027">
               <td class="slot" data-live="player.slot">BE</td>
               <td class="name">
                 Buccaneers D/ST<span data-live="player.flag">
-<span class="week-flag">to play</span>
+<span class="week-flag on">on now</span>
                 </span>
               </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num" data-live="player.points">0.00</td>
               <td class="num dim">3.21</td>
             </tr>
             <tr class="bench waiting" data-player="espn:12483">
@@ -1129,7 +1587,7 @@
                 </span>
               </td>
               <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">22.52</td>
+              <td class="num dim">22.54</td>
             </tr>
             <tr class="bench waiting" data-player="espn:3046439">
               <td class="slot" data-live="player.slot">BE</td>
@@ -1149,7 +1607,7 @@
                 </span>
               </td>
               <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">7.94</td>
+              <td class="num dim">7.92</td>
             </tr>
             <tr class="bench waiting" data-player="espn:4429025">
               <td class="slot" data-live="player.slot">BE</td>
@@ -1219,16 +1677,16 @@
                 </span>
               </td>
               <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">17.46</td>
+              <td class="num dim">17.48</td>
             </tr>
-            <tr class="starter waiting" data-player="espn:4241389">
+            <tr class="starter" data-player="espn:4241389">
               <td class="slot" data-live="player.slot">WR</td>
               <td class="name">
                 CeeDee Lamb<span data-live="player.flag">
-<span class="week-flag">to play</span>
+<span class="week-flag on">on now</span>
                 </span>
               </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num" data-live="player.points">0.00</td>
               <td class="num dim">19.15</td>
             </tr>
             <tr class="starter waiting" data-player="espn:4361432">
@@ -1269,7 +1727,7 @@
                 </span>
               </td>
               <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">4.87</td>
+              <td class="num dim">4.95</td>
             </tr>
             <tr class="starter waiting" data-player="espn:4360234">
               <td class="slot" data-live="player.slot">K</td>
@@ -1289,7 +1747,7 @@
                 </span>
               </td>
               <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">17.05</td>
+              <td class="num dim">17.08</td>
             </tr>
             <tr class="bench" data-player="espn:2576925">
               <td class="slot" data-live="player.slot">BE</td>
@@ -1366,380 +1824,6 @@
       </div>
     </div>
   </details>
-  <details class="card week-game" data-home="espn:2117889138:2026:8" data-away="espn:2117889138:2026:4"
-           data-home-name="Greg" data-away-name="Evan">
-    <summary>
-      <div class="week-side" data-side="home">
-        <span class="swatch" style="background: var(--mgr-greg, var(--accent))"></span>
-        <span class="week-name">Greg</span>
-        <span class="week-score" data-live="home.score">0.00</span>
-        <span class="week-proj">proj 135.28</span>
-      </div>
-      <div class="week-side" data-side="away">
-        <span class="swatch" style="background: var(--mgr-evan, var(--accent))"></span>
-        <span class="week-name">Evan</span>
-        <span class="week-score" data-live="away.score">0.00</span>
-        <span class="week-proj">proj 116.66</span>
-      </div>
-      <p class="week-margin" data-live="margin">
-          not started
-      </p>
-    </summary>
-
-
-    <div class="week-rosters">
-      <div class="week-roster">
-        <h4>Greg</h4>
-        <table>
-          <thead>
-            <tr><th></th><th>Player</th><th class="num">Pts</th><th class="num">Proj</th></tr>
-          </thead>
-          <tbody>
-            <tr class="starter waiting" data-player="espn:4431452">
-              <td class="slot" data-live="player.slot">QB</td>
-              <td class="name">
-                Drake Maye<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">21.73</td>
-            </tr>
-            <tr class="starter waiting" data-player="espn:3043078">
-              <td class="slot" data-live="player.slot">RB</td>
-              <td class="name">
-                Derrick Henry<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">16.77</td>
-            </tr>
-            <tr class="starter waiting" data-player="espn:4361579">
-              <td class="slot" data-live="player.slot">RB</td>
-              <td class="name">
-                Javonte Williams<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">17.50</td>
-            </tr>
-            <tr class="starter waiting" data-player="espn:4360761">
-              <td class="slot" data-live="player.slot">WR</td>
-              <td class="name">
-                Michael Wilson<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">16.78</td>
-            </tr>
-            <tr class="starter waiting" data-player="espn:4362628">
-              <td class="slot" data-live="player.slot">WR</td>
-              <td class="name">
-                Ja&#39;Marr Chase<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">21.82</td>
-            </tr>
-            <tr class="starter waiting" data-player="espn:3040151">
-              <td class="slot" data-live="player.slot">TE</td>
-              <td class="name">
-                George Kittle<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">13.67</td>
-            </tr>
-            <tr class="starter waiting" data-player="espn:4596448">
-              <td class="slot" data-live="player.slot">RB/WR/TE</td>
-              <td class="name">
-                Bucky Irving<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">15.22</td>
-            </tr>
-            <tr class="starter waiting" data-player="espn:-16033">
-              <td class="slot" data-live="player.slot">D/ST</td>
-              <td class="name">
-                Ravens D/ST<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">2.67</td>
-            </tr>
-            <tr class="starter waiting" data-player="espn:4689936">
-              <td class="slot" data-live="player.slot">K</td>
-              <td class="name">
-                Jake Bates<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">9.12</td>
-            </tr>
-            <tr class="bench waiting" data-player="espn:3116165">
-              <td class="slot" data-live="player.slot">BE</td>
-              <td class="name">
-                Chris Godwin Jr.<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">6.81</td>
-            </tr>
-            <tr class="bench" data-player="espn:3139477">
-              <td class="slot" data-live="player.slot">BE</td>
-              <td class="name">
-                Patrick Mahomes<span data-live="player.flag">
-<span class="week-flag">bye</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points">0.00</td>
-              <td class="num dim">0.00</td>
-            </tr>
-            <tr class="bench waiting" data-player="espn:4047650">
-              <td class="slot" data-live="player.slot">BE</td>
-              <td class="name">
-                DK Metcalf<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">12.01</td>
-            </tr>
-            <tr class="bench waiting" data-player="espn:4241463">
-              <td class="slot" data-live="player.slot">BE</td>
-              <td class="name">
-                Jerry Jeudy<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">4.66</td>
-            </tr>
-            <tr class="bench waiting" data-player="espn:4428557">
-              <td class="slot" data-live="player.slot">BE</td>
-              <td class="name">
-                Tyjae Spears<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">6.45</td>
-            </tr>
-            <tr class="bench waiting" data-player="espn:4570037">
-              <td class="slot" data-live="player.slot">BE</td>
-              <td class="name">
-                Terrance Ferguson<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">0.00</td>
-            </tr>
-            <tr class="bench waiting" data-player="espn:4697815">
-              <td class="slot" data-live="player.slot">BE</td>
-              <td class="name">
-                Rachaad White<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">8.01</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="week-roster">
-        <h4>Evan</h4>
-        <table>
-          <thead>
-            <tr><th></th><th>Player</th><th class="num">Pts</th><th class="num">Proj</th></tr>
-          </thead>
-          <tbody>
-            <tr class="starter waiting" data-player="espn:4360689">
-              <td class="slot" data-live="player.slot">QB</td>
-              <td class="name">
-                Tyler Shough<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">19.43</td>
-            </tr>
-            <tr class="starter waiting" data-player="espn:3916148">
-              <td class="slot" data-live="player.slot">RB</td>
-              <td class="name">
-                Tony Pollard<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">13.00</td>
-            </tr>
-            <tr class="starter waiting" data-player="espn:4685382">
-              <td class="slot" data-live="player.slot">RB</td>
-              <td class="name">
-                Omarion Hampton<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">11.56</td>
-            </tr>
-            <tr class="starter waiting" data-player="espn:4426515">
-              <td class="slot" data-live="player.slot">WR</td>
-              <td class="name">
-                Puka Nacua<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">21.66</td>
-            </tr>
-            <tr class="starter waiting" data-player="espn:4569618">
-              <td class="slot" data-live="player.slot">WR</td>
-              <td class="name">
-                Garrett Wilson<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">14.74</td>
-            </tr>
-            <tr class="starter waiting" data-player="espn:4242355">
-              <td class="slot" data-live="player.slot">TE</td>
-              <td class="name">
-                Jake Ferguson<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">6.87</td>
-            </tr>
-            <tr class="starter waiting" data-player="espn:4685247">
-              <td class="slot" data-live="player.slot">RB/WR/TE</td>
-              <td class="name">
-                Braelon Allen<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">14.13</td>
-            </tr>
-            <tr class="starter waiting" data-player="espn:-16028">
-              <td class="slot" data-live="player.slot">D/ST</td>
-              <td class="name">
-                Commanders D/ST<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">7.31</td>
-            </tr>
-            <tr class="starter waiting" data-player="espn:4697745">
-              <td class="slot" data-live="player.slot">K</td>
-              <td class="name">
-                Tyler Loop<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">7.95</td>
-            </tr>
-            <tr class="bench waiting" data-player="espn:3121422">
-              <td class="slot" data-live="player.slot">BE</td>
-              <td class="name">
-                Terry McLaurin<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">13.17</td>
-            </tr>
-            <tr class="bench waiting" data-player="espn:3917315">
-              <td class="slot" data-live="player.slot">BE</td>
-              <td class="name">
-                Kyler Murray<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">20.73</td>
-            </tr>
-            <tr class="bench waiting" data-player="espn:4427366">
-              <td class="slot" data-live="player.slot">BE</td>
-              <td class="name">
-                Breece Hall<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">0.00</td>
-            </tr>
-            <tr class="bench waiting" data-player="espn:4430539">
-              <td class="slot" data-live="player.slot">BE</td>
-              <td class="name">
-                Brenton Strange<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">9.71</td>
-            </tr>
-            <tr class="bench waiting" data-player="espn:4430834">
-              <td class="slot" data-live="player.slot">BE</td>
-              <td class="name">
-                Jalen McMillan<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">0.00</td>
-            </tr>
-            <tr class="bench waiting" data-player="espn:4431299">
-              <td class="slot" data-live="player.slot">BE</td>
-              <td class="name">
-                Rome Odunze<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">10.91</td>
-            </tr>
-            <tr class="bench" data-player="espn:4678008">
-              <td class="slot" data-live="player.slot">BE</td>
-              <td class="name">
-                Jonathon Brooks<span data-live="player.flag">
-<span class="week-flag">bye</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points">0.00</td>
-              <td class="num dim">0.00</td>
-            </tr>
-            <tr class="bench waiting" data-player="espn:4426385">
-              <td class="slot" data-live="player.slot">IR</td>
-              <td class="name">
-                Zach Charbonnet<span data-live="player.flag">
-<span class="week-flag">to play</span>
-                </span>
-              </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">0.00</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </details>
   <details class="card week-game" data-home="espn:2117889138:2026:11" data-away="espn:2117889138:2026:7"
            data-home-name="Nic" data-away-name="Beale">
     <summary>
@@ -1747,19 +1831,30 @@
         <span class="swatch" style="background: var(--mgr-nic, var(--accent))"></span>
         <span class="week-name">Nic</span>
         <span class="week-score" data-live="home.score">0.00</span>
-        <span class="week-proj">proj 139.52</span>
+        <span class="week-proj">
+          &rarr; <span data-live="home.finish">83.36</span>
+          <span class="week-left"><span data-live="home.left">6</span> left</span>
+        </span>
       </div>
       <div class="week-side" data-side="away">
         <span class="swatch" style="background: var(--mgr-stephen, var(--accent))"></span>
         <span class="week-name">Beale</span>
         <span class="week-score" data-live="away.score">0.00</span>
-        <span class="week-proj">proj 114.67</span>
+        <span class="week-proj">
+          &rarr; <span data-live="away.finish">114.67</span>
+          <span class="week-left"><span data-live="away.left">9</span> left</span>
+        </span>
       </div>
       <p class="week-margin" data-live="margin">
-          not started
+          level
+            &middot; 6 left for Nic, 9 for Beale
       </p>
     </summary>
 
+    <div class="week-sparks">
+      <div><svg class="spark" viewBox="0 0 180 32" width="180" height="32" role="img" aria-label="Weekly scores"><polyline points="0.0,28.0 22.5,5.1 45.0,5.1 67.5,7.4 90.0,9.7 112.5,4.0 135.0,8.2 157.5,6.3 180.0,7.1" fill="none" stroke="var(--mgr-nic, var(--accent))" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="112.5" cy="4.0" r="2.8" fill="var(--mgr-nic, var(--accent))"/><circle cx="0.0" cy="28.0" r="2.8" fill="var(--mgr-nic, var(--accent))"/></svg></div>
+      <div><svg class="spark" viewBox="0 0 180 32" width="180" height="32" role="img" aria-label="Weekly scores"><polyline points="0.0,28.0 22.5,28.0 45.0,28.0 67.5,28.0 90.0,28.0 112.5,28.0 135.0,28.0 157.5,28.0 180.0,28.0" fill="none" stroke="var(--mgr-stephen, var(--accent))" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="0.0" cy="28.0" r="2.8" fill="var(--mgr-stephen, var(--accent))"/><circle cx="0.0" cy="28.0" r="2.8" fill="var(--mgr-stephen, var(--accent))"/></svg></div>
+    </div>
 
     <div class="week-rosters">
       <div class="week-roster">
@@ -1769,14 +1864,14 @@
             <tr><th></th><th>Player</th><th class="num">Pts</th><th class="num">Proj</th></tr>
           </thead>
           <tbody>
-            <tr class="starter waiting" data-player="espn:2577417">
+            <tr class="starter" data-player="espn:2577417">
               <td class="slot" data-live="player.slot">QB</td>
               <td class="name">
                 Dak Prescott<span data-live="player.flag">
-<span class="week-flag">to play</span>
+<span class="week-flag on">on now</span>
                 </span>
               </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num" data-live="player.points">0.00</td>
               <td class="num dim">21.26</td>
             </tr>
             <tr class="starter waiting" data-player="espn:4429795">
@@ -1807,16 +1902,16 @@
                 </span>
               </td>
               <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
-              <td class="num dim">14.24</td>
+              <td class="num dim">0.00</td>
             </tr>
-            <tr class="starter waiting" data-player="espn:4426354">
+            <tr class="starter" data-player="espn:4426354">
               <td class="slot" data-live="player.slot">WR</td>
               <td class="name">
                 George Pickens<span data-live="player.flag">
-<span class="week-flag">to play</span>
+<span class="week-flag on">on now</span>
                 </span>
               </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num" data-live="player.points">0.00</td>
               <td class="num dim">13.22</td>
             </tr>
             <tr class="starter waiting" data-player="espn:4361307">
@@ -1839,14 +1934,14 @@
               <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
               <td class="num dim">13.51</td>
             </tr>
-            <tr class="starter waiting" data-player="espn:-16006">
+            <tr class="starter" data-player="espn:-16006">
               <td class="slot" data-live="player.slot">D/ST</td>
               <td class="name">
                 Cowboys D/ST<span data-live="player.flag">
-<span class="week-flag">to play</span>
+<span class="week-flag on">on now</span>
                 </span>
               </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num" data-live="player.points">0.00</td>
               <td class="num dim">7.43</td>
             </tr>
             <tr class="starter waiting" data-player="espn:4567104">
@@ -2121,19 +2216,30 @@
         <span class="swatch" style="background: var(--mgr-adam, var(--accent))"></span>
         <span class="week-name">Adam</span>
         <span class="week-score" data-live="home.score">0.00</span>
-        <span class="week-proj">proj 134.18</span>
+        <span class="week-proj">
+          &rarr; <span data-live="home.finish">134.18</span>
+          <span class="week-left"><span data-live="home.left">9</span> left</span>
+        </span>
       </div>
       <div class="week-side" data-side="away">
         <span class="swatch" style="background: var(--mgr-sean, var(--accent))"></span>
         <span class="week-name">Sean</span>
         <span class="week-score" data-live="away.score">0.00</span>
-        <span class="week-proj">proj 87.01</span>
+        <span class="week-proj">
+          &rarr; <span data-live="away.finish">87.01</span>
+          <span class="week-left"><span data-live="away.left">8</span> left</span>
+        </span>
       </div>
       <p class="week-margin" data-live="margin">
-          not started
+          level
+            &middot; 9 left for Adam, 8 for Sean
       </p>
     </summary>
 
+    <div class="week-sparks">
+      <div><svg class="spark" viewBox="0 0 180 32" width="180" height="32" role="img" aria-label="Weekly scores"><polyline points="0.0,28.0 22.5,28.0 45.0,28.0 67.5,28.0 90.0,28.0 112.5,28.0 135.0,28.0 157.5,28.0 180.0,28.0" fill="none" stroke="var(--mgr-adam, var(--accent))" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="0.0" cy="28.0" r="2.8" fill="var(--mgr-adam, var(--accent))"/><circle cx="0.0" cy="28.0" r="2.8" fill="var(--mgr-adam, var(--accent))"/></svg></div>
+      <div><svg class="spark" viewBox="0 0 180 32" width="180" height="32" role="img" aria-label="Weekly scores"><polyline points="0.0,28.0 22.5,28.0 45.0,28.0 67.5,28.0 90.0,28.0 112.5,28.0 135.0,28.0 157.5,28.0 180.0,28.0" fill="none" stroke="var(--mgr-sean, var(--accent))" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="0.0" cy="28.0" r="2.8" fill="var(--mgr-sean, var(--accent))"/><circle cx="0.0" cy="28.0" r="2.8" fill="var(--mgr-sean, var(--accent))"/></svg></div>
+    </div>
 
     <div class="week-rosters">
       <div class="week-roster">
@@ -2253,14 +2359,14 @@
               <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
               <td class="num dim">13.77</td>
             </tr>
-            <tr class="bench waiting" data-player="espn:4371733">
+            <tr class="bench" data-player="espn:4371733">
               <td class="slot" data-live="player.slot">BE</td>
               <td class="name">
                 Kenny Gainwell<span data-live="player.flag">
-<span class="week-flag">to play</span>
+<span class="week-flag on">on now</span>
                 </span>
               </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num" data-live="player.points">0.00</td>
               <td class="num dim">7.30</td>
             </tr>
             <tr class="bench waiting" data-player="espn:4428850">
@@ -2463,14 +2569,14 @@
               <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
               <td class="num dim">9.50</td>
             </tr>
-            <tr class="bench waiting" data-player="espn:5083754">
+            <tr class="bench" data-player="espn:5083754">
               <td class="slot" data-live="player.slot">BE</td>
               <td class="name">
                 Ryan Flournoy<span data-live="player.flag">
-<span class="week-flag">to play</span>
+<span class="week-flag on">on now</span>
                 </span>
               </td>
-              <td class="num" data-live="player.points"><span class="dim">&ndash;</span></td>
+              <td class="num" data-live="player.points">0.00</td>
               <td class="num dim">8.42</td>
             </tr>
             <tr class="bench waiting" data-player="espn:4047646">
@@ -2490,10 +2596,10 @@
   </details>
 </div>
 
-<h2>The table</h2>
+<h2>If the week ended now</h2>
 <p class="sub">
-    Regular-season record through every finished week. Nothing in week 5 counts
-    towards it yet.
+    Regular-season record with this week counted as it currently stands. Whoever is ahead
+    is credited with the win, which is a statement about right now and not about Tuesday.
 The line marks the 6 who would make the playoffs.</p>
 <div class="card scroll">
 <table>
@@ -2664,115 +2770,6 @@ The line marks the 6 who would make the playoffs.</p>
 </table>
 </div>
 
-<h2>Week 4, settled</h2>
-<p class="sub">
-  The week the league has just rolled past. Every game in it is final and its trophies
-  are frozen, so nothing below is provisional.
-</p>
-<div class="card scroll">
-<table>
-  <thead>
-    <tr><th>Winner</th><th class="num">Score</th><th></th><th>Loser</th><th class="num">Score</th></tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="name">Stew</td>
-      <td class="num">138.58</td>
-      <td class="dim">beat</td>
-      <td class="name">Greg</td>
-      <td class="num">138.50</td>
-    </tr>
-    <tr>
-      <td class="name">Jon</td>
-      <td class="num">100.98</td>
-      <td class="dim">beat</td>
-      <td class="name">Ben</td>
-      <td class="num">98.88</td>
-    </tr>
-    <tr>
-      <td class="name">Sean</td>
-      <td class="num">126.22</td>
-      <td class="dim">beat</td>
-      <td class="name">L.J.</td>
-      <td class="num">122.38</td>
-    </tr>
-    <tr>
-      <td class="name">Nic</td>
-      <td class="num">138.20</td>
-      <td class="dim">beat</td>
-      <td class="name">Evan</td>
-      <td class="num">112.14</td>
-    </tr>
-    <tr>
-      <td class="name">Blunt</td>
-      <td class="num">129.72</td>
-      <td class="dim">beat</td>
-      <td class="name">Josh</td>
-      <td class="num">103.42</td>
-    </tr>
-    <tr>
-      <td class="name">Adam</td>
-      <td class="num">151.46</td>
-      <td class="dim">beat</td>
-      <td class="name">Beale</td>
-      <td class="num">114.32</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-<div class="grid">
-  <div class="card award">
-    <div class="award-head"><span class="award-emoji">🏆</span>Team of the Week</div>
-    <div class="award-winner"><a href="managers/mgr_adam.html">Adam</a></div>
-    <p class="award-blurb">151.46 points — the highest score of the week.</p>
-  </div>
-  <div class="card award">
-    <div class="award-head"><span class="award-emoji">💩</span>Team of the Weak</div>
-    <div class="award-winner"><a href="managers/mgr_ben.html">Ben</a></div>
-    <p class="award-blurb">98.88 points. Somebody had to.</p>
-  </div>
-  <div class="card award">
-    <div class="award-head"><span class="award-emoji">🔥</span>Player of the Week</div>
-    <div class="award-winner"><a href="managers/mgr_stew.html">Stew</a></div>
-    <p class="award-blurb">Tetairoa McMillan put 45.20 on the board for Stew.</p>
-  </div>
-  <div class="card award">
-    <div class="award-head"><span class="award-emoji">🧊</span>Biggest Dud</div>
-    <div class="award-winner"><a href="managers/mgr_larry.html">L.J.</a></div>
-    <p class="award-blurb">Rashee Rice was projected for 14.90 and returned 0.00.</p>
-  </div>
-  <div class="card award">
-    <div class="award-head"><span class="award-emoji">🍀</span>Luckiest Bastard</div>
-    <div class="award-winner"><a href="managers/mgr_jon.html">Jon</a></div>
-    <p class="award-blurb">Won with 100.98 — a score that beat only 9% of the league.</p>
-  </div>
-  <div class="card award">
-    <div class="award-head"><span class="award-emoji">😭</span>Most Robbed</div>
-    <div class="award-winner"><a href="managers/mgr_greg.html">Greg</a></div>
-    <p class="award-blurb">Lost with 138.50 — a score that would have beaten 82% of the league.</p>
-  </div>
-  <div class="card award">
-    <div class="award-head"><span class="award-emoji">🧠</span>Big-Brain Start</div>
-    <div class="award-winner"><a href="managers/mgr_andrew.html">Blunt</a></div>
-    <p class="award-blurb">Started Tucker Kraft over a bench player projected higher, and got 16.50 against a projection of 8.90.</p>
-  </div>
-  <div class="card award">
-    <div class="award-head"><span class="award-emoji">🤡</span>Clown Move</div>
-    <div class="award-winner"><a href="managers/mgr_ben.html">Ben</a></div>
-    <p class="award-blurb">Benched Brian Robinson Jr. (25.70) and started Kalif Raymond (2.60) at RB/WR/TE.</p>
-  </div>
-  <div class="card award">
-    <div class="award-head"><span class="award-emoji">🪑</span>Best Bench of the Week</div>
-    <div class="award-winner"><a href="managers/mgr_ben.html">Ben</a></div>
-    <p class="award-blurb">Left 66.40 on the bench — scored 98.88 with 165.28 on the roster.</p>
-  </div>
-  <div class="card award">
-    <div class="award-head"><span class="award-emoji">💀</span>RIP to Whoever Played Him</div>
-    <div class="award-winner"><a href="managers/mgr_stephen.html">Beale</a></div>
-    <p class="award-blurb">Ran into Adam&#39;s 151.46 and lost by 37.14.</p>
-  </div>
-</div>
 
 <p class="section-note">
   Records, trophies and every all-time list count finished weeks only. Nothing on this
@@ -2781,7 +2778,7 @@ The line marks the 6 who would make the playoffs.</p>
 </p>
 
 <footer>
-  <p>Built 08 Oct 2026 from 406 games. Records follow the manager, not the team name.</p>
+  <p>Built 09 Oct 2026 from 406 games. Records follow the manager, not the team name.</p>
   <p>Scores come from ESPN. Playoff rounds that span two weeks are marked, and excluded from single&#8209;week records.</p>
 </footer>
 </main>
