@@ -9,12 +9,12 @@
   --mgr-evan: #a16207;
   --mgr-greg: #0f766e;
   --mgr-jon: #a21caf;
-  --mgr-josh: #1d4ed8;
+  --mgr-josh: #002244;
   --mgr-larry: #4d7c0f;
   --mgr-nic: #5b21b6;
-  --mgr-sean: #b91c1c;
+  --mgr-sean: #203731;
   --mgr-stephen: #0e7490;
-  --mgr-stew: #9a3412;
+  --mgr-stew: #AA0000;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,12 +27,12 @@
   --mgr-evan: #fbbf24;
   --mgr-greg: #2dd4bf;
   --mgr-jon: #f472b6;
-  --mgr-josh: #93c5fd;
+  --mgr-josh: #69BE28;
   --mgr-larry: #bef264;
   --mgr-nic: #c4b5fd;
-  --mgr-sean: #fca5a5;
+  --mgr-sean: #FFB612;
   --mgr-stephen: #67e8f9;
-  --mgr-stew: #fdba74;
+  --mgr-stew: #B3995D;
 }
 }
 
@@ -45,12 +45,12 @@
   --mgr-evan: #fbbf24;
   --mgr-greg: #2dd4bf;
   --mgr-jon: #f472b6;
-  --mgr-josh: #93c5fd;
+  --mgr-josh: #69BE28;
   --mgr-larry: #bef264;
   --mgr-nic: #c4b5fd;
-  --mgr-sean: #fca5a5;
+  --mgr-sean: #FFB612;
   --mgr-stephen: #67e8f9;
-  --mgr-stew: #fdba74;
+  --mgr-stew: #B3995D;
 }
 
 :root[data-theme="light"] {
@@ -62,10 +62,10 @@
   --mgr-evan: #a16207;
   --mgr-greg: #0f766e;
   --mgr-jon: #a21caf;
-  --mgr-josh: #1d4ed8;
+  --mgr-josh: #002244;
   --mgr-larry: #4d7c0f;
   --mgr-nic: #5b21b6;
-  --mgr-sean: #b91c1c;
+  --mgr-sean: #203731;
   --mgr-stephen: #0e7490;
-  --mgr-stew: #9a3412;
+  --mgr-stew: #AA0000;
 }
